@@ -17,7 +17,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.0.4
-    created: "2025-01-04T12:51:53.102522+08:00"
+    created: "2025-01-04T12:52:09.06351+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -63,7 +63,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.0.4
-    created: "2025-01-04T12:51:53.106661+08:00"
+    created: "2025-01-04T12:52:09.067307+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -105,7 +105,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.4.3
-    created: "2025-01-04T12:51:53.109889+08:00"
+    created: "2025-01-04T12:52:09.070435+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -136,7 +136,7 @@ entries:
   nfs-client:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2025-01-04T12:51:53.110239+08:00"
+    created: "2025-01-04T12:52:09.070755+08:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -156,7 +156,7 @@ entries:
   nfs-provisioner:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2025-01-04T12:51:53.110566+08:00"
+    created: "2025-01-04T12:52:09.071059+08:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -176,7 +176,7 @@ entries:
   nfs-subdir-external-provisioner:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2025-01-04T12:51:53.11089+08:00"
+    created: "2025-01-04T12:52:09.071371+08:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -206,7 +206,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 17.2.0
-    created: "2025-01-04T12:51:53.114544+08:00"
+    created: "2025-01-04T12:52:09.075183+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -246,7 +246,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 4.0.5
-    created: "2025-01-04T12:51:53.117167+08:00"
+    created: "2025-01-04T12:52:09.077905+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -256,7 +256,7 @@ entries:
     description: RabbitMQ is an open source general-purpose message broker that is
       designed for consistent, highly-available messaging scenarios (both synchronous
       and asynchronous).
-    digest: 658aea8531e2f512a1b39abc5578a16864880037de2edda1cdf6cf1945155f7f
+    digest: 985a44faf49ed9a573d11080cc1f87d5f87e8192806105796d2292cabdf47e59
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/rabbitmq/img/rabbitmq-stack-220x234.png
     keywords:
@@ -289,7 +289,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 7.4.1
-    created: "2025-01-04T12:51:53.121401+08:00"
+    created: "2025-01-04T12:52:09.082142+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -315,4 +315,4 @@ entries:
     urls:
     - redis-20.6.1.tgz
     version: 20.6.1
-generated: "2025-01-04T12:51:53.097879+08:00"
+generated: "2025-01-04T12:52:09.059275+08:00"
