@@ -20,7 +20,7 @@ global:
   ##   - myRegistryKeySecretName
   ##
   imagePullSecrets: []
-  defaultStorageClass: "nfs-client"
+  defaultStorageClass: ""
   storageClass: ""
   ## Security parameters
   ##

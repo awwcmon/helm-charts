@@ -20,7 +20,7 @@ global:
   ##
   imagePullSecrets: []
   defaultStorageClass: ""
-  storageClass: "nfs-client"
+  storageClass: ""
   ## Security parameters
   ##
   security:

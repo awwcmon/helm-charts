@@ -17,7 +17,7 @@ global:
   ## @param global.defaultStorageClass Global default StorageClass for Persistent Volume(s)
 ## @param global.storageClass DEPRECATED: use global.defaultStorageClass instead
   ##
-  defaultStorageClass: "nfs-client"
+  defaultStorageClass: ""
   storageClass: ""
   ## Security parameters
   ##
