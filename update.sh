@@ -1,6 +1,6 @@
 #!/bin/zsh
 set -eux -o pipefail
-packages=$(find . -maxdepth 1 -type d ! -name ".*" ! -name "charts"|xargs)
+packages=$(find packages -maxdepth 1 -type d ! -name ".*" ! -name "charts" ! -name "packages" |xargs)
 helm package $packages --destination ./charts
 helm repo index .
 git add .
