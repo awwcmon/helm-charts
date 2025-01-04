@@ -591,12 +591,12 @@ podSecurityContext:
 containerSecurityContext:
   enabled: true
   seLinuxOptions: {}
-  runAsUser: 0
-  runAsGroup: 0
-  runAsNonRoot: false
-  privileged: true
+  runAsUser: 999
+  runAsGroup: 999
+  runAsNonRoot: true
+  privileged: false
   readOnlyRootFilesystem: true
-  allowPrivilegeEscalation: true
+  allowPrivilegeEscalation: false
   capabilities:
     drop: ["ALL"]
   seccompProfile:
@@ -1138,12 +1138,12 @@ passwordUpdateJob:
   containerSecurityContext:
     enabled: true
     seLinuxOptions: {}
-    runAsUser: 0
-    runAsGroup: 0
-    runAsNonRoot: false
-    privileged: true
+    runAsUser: 999
+    runAsGroup: 999
+    runAsNonRoot: true
+    privileged: false
     readOnlyRootFilesystem: true
-    allowPrivilegeEscalation: true
+    allowPrivilegeEscalation: false
     capabilities:
       drop: ["ALL"]
     seccompProfile:
@@ -1429,12 +1429,12 @@ backup:
     containerSecurityContext:
       enabled: true
       seLinuxOptions: {}
-      runAsUser: 0
-      runAsGroup: 0
-      runAsNonRoot: false
-      privileged: true
+      runAsUser: 999
+      runAsGroup: 999
+      runAsNonRoot: true
+      privileged: false
       readOnlyRootFilesystem: true
-      allowPrivilegeEscalation: true
+      allowPrivilegeEscalation: false
       capabilities:
         drop: ["ALL"]
       seccompProfile:
@@ -1675,7 +1675,7 @@ volumePermissions:
   ##
   securityContext:
     seLinuxOptions: {}
-    runAsUser: 0
+    runAsUser: 999
 ## @section Arbiter parameters
 ##
 arbiter:
@@ -1849,12 +1849,12 @@ arbiter:
   containerSecurityContext:
     enabled: true
     seLinuxOptions: {}
-    runAsUser: 0
-    runAsGroup: 0
-    runAsNonRoot: false
-    privileged: true
+    runAsUser: 999
+    runAsGroup: 999
+    runAsNonRoot: true
+    privileged: false
     readOnlyRootFilesystem: true
-    allowPrivilegeEscalation: true
+    allowPrivilegeEscalation: false
     capabilities:
       drop: ["ALL"]
     seccompProfile:
@@ -2192,12 +2192,12 @@ hidden:
   containerSecurityContext:
     enabled: true
     seLinuxOptions: {}
-    runAsUser: 0
-    runAsGroup: 0
-    runAsNonRoot: false
-    privileged: true
+    runAsUser: 999
+    runAsGroup: 999
+    runAsNonRoot: true
+    privileged: false
     readOnlyRootFilesystem: true
-    allowPrivilegeEscalation: true
+    allowPrivilegeEscalation: false
     capabilities:
       drop: ["ALL"]
     seccompProfile:
@@ -2367,7 +2367,7 @@ hidden:
     annotations: {}
     ## @param hidden.persistence.mountPath The path the volume will be mounted at, useful when using different MongoDB(&reg;) images.
     ##
-    mountPath: /bitnami/mongodb
+    mountPath: /data/db
     ## @param hidden.persistence.subPath The subdirectory of the volume to mount to, useful in dev environments
     ## and one PV for multiple services.
     ##
