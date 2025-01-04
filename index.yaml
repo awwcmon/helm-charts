@@ -17,7 +17,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.0.4
-    created: "2025-01-04T10:48:42.246348+08:00"
+    created: "2025-01-04T10:54:55.134119+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -59,7 +59,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.4.3
-    created: "2025-01-04T10:48:42.250219+08:00"
+    created: "2025-01-04T10:54:55.137087+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -100,7 +100,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 17.2.0
-    created: "2025-01-04T10:48:42.253723+08:00"
+    created: "2025-01-04T10:54:55.141137+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -140,7 +140,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 4.0.5
-    created: "2025-01-04T10:48:42.256907+08:00"
+    created: "2025-01-04T10:54:55.144107+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -183,7 +183,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 7.4.1
-    created: "2025-01-04T10:48:42.261661+08:00"
+    created: "2025-01-04T10:54:55.148864+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -209,4 +209,4 @@ entries:
     urls:
     - redis-20.6.1.tgz
     version: 20.6.1
-generated: "2025-01-04T10:48:42.239629+08:00"
+generated: "2025-01-04T10:54:55.126733+08:00"
