@@ -6,7 +6,7 @@ image:
   tag: v4.0.2
   pullPolicy: IfNotPresent
 imagePullSecrets: []
-fullnameOverride: nfs-provisioner
+fullnameOverride: nfs-client
 nfs:
   server: 10.0.0.1
   path: /opt/data
