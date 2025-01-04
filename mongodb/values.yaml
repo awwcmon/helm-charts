@@ -45,7 +45,7 @@ global:
 nameOverride: ""
 ## @param fullnameOverride String to fully override mongodb.fullname template
 ##
-fullnameOverride: ""
+fullnameOverride: "mongo"
 ## @param namespaceOverride String to fully override common.names.namespace
 ##
 namespaceOverride: ""
