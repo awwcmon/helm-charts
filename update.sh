@@ -9,3 +9,4 @@ helm repo index .
 git add .
 git commit -m "add or update $name"
 git push
+helm repo update
