@@ -35,7 +35,7 @@ keywords:
 maintainers:
 - name: Broadcom, Inc. All Rights Reserved.
   url: https://github.com/bitnami/charts
-name: mongodb
+name: mongo
 sources:
 - https://github.com/bitnami/charts/tree/main/bitnami/mongodb
 version: 16.4.0
