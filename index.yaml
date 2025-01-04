@@ -17,7 +17,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.0.4
-    created: "2025-01-04T13:30:55.924408+08:00"
+    created: "2025-01-04T13:34:02.054032+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -27,7 +27,7 @@ entries:
     description: MongoDB(R) is a relational open source NoSQL database. Easy to use,
       it stores data in JSON-like documents. Automated scalability and high-performance.
       Ideal for developing cloud native applications.
-    digest: a64c6ed754a86bf78cfdefaf2e14cec44352ba6e2795e0bce471da5a7e7e6e38
+    digest: cd0a9a35a78827b18cf18d9157846b78e2fd95a2990f29dd1355ada7adfd9301
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
     keywords:
@@ -44,7 +44,7 @@ entries:
     sources:
     - https://github.com/bitnami/charts/tree/main/bitnami/mongodb
     urls:
-    - https://awwcmon.github.io/helm-charts/charts/charts/mongo-16.4.0.tgz
+    - charts/mongo-16.4.0.tgz
     version: 16.4.0
   mysql:
   - annotations:
@@ -59,7 +59,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.4.3
-    created: "2025-01-04T13:30:55.927054+08:00"
+    created: "2025-01-04T13:34:02.058114+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -69,7 +69,7 @@ entries:
     description: MySQL is a fast, reliable, scalable, and easy to use open source
       relational database system. Designed to handle mission-critical, heavy-load
       production applications.
-    digest: c7dc692e4c48fd6bd935c81b0f1a53aeb1893dfcf13151c7eb343ebdfbc904d3
+    digest: 4e7aa1340c598f88e46fa1e2b63e86e31acce0537ee9b5dc9282059867c6c1b3
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/mysql/img/mysql-stack-220x234.png
     keywords:
@@ -85,16 +85,16 @@ entries:
     sources:
     - https://github.com/bitnami/charts/tree/main/bitnami/mysql
     urls:
-    - https://awwcmon.github.io/helm-charts/charts/charts/mysql-12.2.0.tgz
+    - charts/mysql-12.2.0.tgz
     version: 12.2.0
   nfs-client:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2025-01-04T13:30:55.927612+08:00"
+    created: "2025-01-04T13:34:02.058515+08:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
-    digest: 1421dbc28d33a17b456dd0d098598ee7024113212d82518dc194b275679f398d
+    digest: e461c5eaff08215f149971e6030bce8d683ac159b15c02dcd601a11c667be414
     home: https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
     keywords:
     - nfs
@@ -105,7 +105,7 @@ entries:
     sources:
     - https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
     urls:
-    - https://awwcmon.github.io/helm-charts/charts/charts/nfs-client-4.0.18.tgz
+    - charts/nfs-client-4.0.18.tgz
     version: 4.0.18
   postgresql:
   - annotations:
@@ -120,7 +120,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 17.2.0
-    created: "2025-01-04T13:30:55.931918+08:00"
+    created: "2025-01-04T13:34:02.062068+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -130,7 +130,7 @@ entries:
     description: PostgreSQL (Postgres) is an open source object-relational database
       known for reliability and data integrity. ACID-compliant, it supports foreign
       keys, joins, views, triggers and stored procedures.
-    digest: 8b9248cdd0221dcb87af6eac9bf7e43b2c5a5a18247f22462bdcd8007ba89535
+    digest: 48db20ab954fe802dff19240f4d05c5c54f7ba6165699a0f8a64d7580672ca15
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
     keywords:
@@ -147,7 +147,7 @@ entries:
     sources:
     - https://github.com/bitnami/charts/tree/main/bitnami/postgresql
     urls:
-    - https://awwcmon.github.io/helm-charts/charts/charts/postgresql-16.3.5.tgz
+    - charts/postgresql-16.3.5.tgz
     version: 16.3.5
   rabbitmq:
   - annotations:
@@ -160,7 +160,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 4.0.5
-    created: "2025-01-04T13:30:55.934775+08:00"
+    created: "2025-01-04T13:34:02.064446+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -170,7 +170,7 @@ entries:
     description: RabbitMQ is an open source general-purpose message broker that is
       designed for consistent, highly-available messaging scenarios (both synchronous
       and asynchronous).
-    digest: be401defdaec0cd50e2f4442ec1df67e6d4b6a67f99dcc1eb53fe1cf1706b4a9
+    digest: ac93d320e3b3bfa6d031bdb190a8aedc1aa8f8a9c79c976358fc30f211e84575
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/rabbitmq/img/rabbitmq-stack-220x234.png
     keywords:
@@ -184,7 +184,7 @@ entries:
     sources:
     - https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq
     urls:
-    - https://awwcmon.github.io/helm-charts/charts/charts/rabbitmq-15.2.1.tgz
+    - charts/rabbitmq-15.2.1.tgz
     version: 15.2.1
   redis:
   - annotations:
@@ -203,7 +203,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 7.4.1
-    created: "2025-01-04T13:30:55.938966+08:00"
+    created: "2025-01-04T13:34:02.0688+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -213,7 +213,7 @@ entries:
     description: Redis(R) is an open source, advanced key-value store. It is often
       referred to as a data structure server since keys can contain strings, hashes,
       lists, sets and sorted sets.
-    digest: 830e9c6908cdd1d4d6b198d6f646fafed9518cb0ede4471a207a6677524cf22f
+    digest: 6c3cdbf20721804a6f3ec0442540a8182cd572a84c2382ae50a63a46af29a6b2
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
     keywords:
@@ -227,6 +227,6 @@ entries:
     sources:
     - https://github.com/bitnami/charts/tree/main/bitnami/redis
     urls:
-    - https://awwcmon.github.io/helm-charts/charts/charts/redis-20.6.1.tgz
+    - charts/redis-20.6.1.tgz
     version: 20.6.1
-generated: "2025-01-04T13:30:55.919059+08:00"
+generated: "2025-01-04T13:34:02.049399+08:00"
