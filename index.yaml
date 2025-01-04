@@ -17,7 +17,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.0.4
-    created: "2025-01-04T12:02:15.540296+08:00"
+    created: "2025-01-04T12:18:15.828927+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -59,7 +59,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.4.3
-    created: "2025-01-04T12:02:15.543377+08:00"
+    created: "2025-01-04T12:18:15.832048+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -87,10 +87,30 @@ entries:
     urls:
     - mysql-12.2.0.tgz
     version: 12.2.0
+  nfs-provisioner:
+  - apiVersion: v1
+    appVersion: 4.0.2
+    created: "2025-01-04T12:18:15.832403+08:00"
+    description: nfs-subdir-external-provisioner is an automatic provisioner that
+      used your *already configured* NFS server, automatically creating Persistent
+      Volumes.
+    digest: 2f257b0b06c74bdf8ae9ad4723d9e39cba3df1b7ccbc02964418d727948019b0
+    home: https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
+    keywords:
+    - nfs
+    - storage
+    - provisioner
+    kubeVersion: '>=1.9.0-0'
+    name: nfs-provisioner
+    sources:
+    - https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
+    urls:
+    - nfs-provisioner-4.0.18.tgz
+    version: 4.0.18
   nfs-subdir-external-provisioner:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2025-01-04T12:02:15.543698+08:00"
+    created: "2025-01-04T12:18:15.832914+08:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -120,7 +140,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 17.2.0
-    created: "2025-01-04T12:02:15.551879+08:00"
+    created: "2025-01-04T12:18:15.83761+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -160,7 +180,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 4.0.5
-    created: "2025-01-04T12:02:15.555724+08:00"
+    created: "2025-01-04T12:18:15.840631+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -203,7 +223,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 7.4.1
-    created: "2025-01-04T12:02:15.560771+08:00"
+    created: "2025-01-04T12:18:15.845743+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -229,4 +249,4 @@ entries:
     urls:
     - redis-20.6.1.tgz
     version: 20.6.1
-generated: "2025-01-04T12:02:15.535221+08:00"
+generated: "2025-01-04T12:18:15.822266+08:00"

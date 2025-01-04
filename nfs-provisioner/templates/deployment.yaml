@@ -1,13 +1,13 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ template "nfs-subdir-external-provisioner.fullname" . }}
   labels:
     {{- include "nfs-subdir-external-provisioner.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
-  strategy:
-    type: {{ .Values.strategyType }}
+{{/*  strategy:*/}}
+{{/*    type: {{ .Values.strategyType }}*/}}
   selector:
     matchLabels:
       {{- include "nfs-subdir-external-provisioner.selectorLabels" . | nindent 6 }}
