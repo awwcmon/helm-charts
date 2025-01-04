@@ -1,5 +1,51 @@
 apiVersion: v1
 entries:
+  mongodb:
+  - annotations:
+      category: Database
+      images: |
+        - name: kubectl
+          image: docker.io/bitnami/kubectl:1.31.3-debian-12-r1
+        - name: mongodb
+          image: docker.io/bitnami/mongodb:8.0.4-debian-12-r0
+        - name: mongodb-exporter
+          image: docker.io/bitnami/mongodb-exporter:0.43.0-debian-12-r0
+        - name: nginx
+          image: docker.io/bitnami/nginx:1.27.3-debian-12-r0
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r33
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 8.0.4
+    created: "2025-01-04T10:48:42.246348+08:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: MongoDB(R) is a relational open source NoSQL database. Easy to use,
+      it stores data in JSON-like documents. Automated scalability and high-performance.
+      Ideal for developing cloud native applications.
+    digest: 87862d020d5ec68338077cbe308dba9b189d850589dbc074a7dfbd2681a8d42d
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
+    keywords:
+    - mongodb
+    - database
+    - nosql
+    - cluster
+    - replicaset
+    - replication
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: mongodb
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/mongodb
+    urls:
+    - mongodb-16.4.0.tgz
+    version: 16.4.0
   mysql:
   - annotations:
       category: Database
@@ -13,7 +59,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.4.3
-    created: "2025-01-04T09:55:41.956002+08:00"
+    created: "2025-01-04T10:48:42.250219+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -41,6 +87,85 @@ entries:
     urls:
     - mysql-12.2.0.tgz
     version: 12.2.0
+  postgresql:
+  - annotations:
+      category: Database
+      images: |
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r34
+        - name: postgres-exporter
+          image: docker.io/bitnami/postgres-exporter:0.16.0-debian-12-r2
+        - name: postgresql
+          image: docker.io/bitnami/postgresql:17.2.0-debian-12-r5
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 17.2.0
+    created: "2025-01-04T10:48:42.253723+08:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: PostgreSQL (Postgres) is an open source object-relational database
+      known for reliability and data integrity. ACID-compliant, it supports foreign
+      keys, joins, views, triggers and stored procedures.
+    digest: ee529a8d91aadee67a82c35380ea603c87c3c867eca6c4c51995f31194f08a6d
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
+    keywords:
+    - postgresql
+    - postgres
+    - database
+    - sql
+    - replication
+    - cluster
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: postgresql
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/postgresql
+    urls:
+    - postgresql-16.3.5.tgz
+    version: 16.3.5
+  rabbitmq:
+  - annotations:
+      category: Infrastructure
+      images: |
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r34
+        - name: rabbitmq
+          image: docker.io/bitnami/rabbitmq:4.0.5-debian-12-r0
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 4.0.5
+    created: "2025-01-04T10:48:42.256907+08:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: RabbitMQ is an open source general-purpose message broker that is
+      designed for consistent, highly-available messaging scenarios (both synchronous
+      and asynchronous).
+    digest: 658aea8531e2f512a1b39abc5578a16864880037de2edda1cdf6cf1945155f7f
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/rabbitmq/img/rabbitmq-stack-220x234.png
+    keywords:
+    - rabbitmq
+    - message queue
+    - AMQP
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: rabbitmq
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq
+    urls:
+    - rabbitmq-15.2.1.tgz
+    version: 15.2.1
   redis:
   - annotations:
       category: Database
@@ -58,7 +183,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 7.4.1
-    created: "2025-01-04T09:55:41.962601+08:00"
+    created: "2025-01-04T10:48:42.261661+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -84,4 +209,4 @@ entries:
     urls:
     - redis-20.6.1.tgz
     version: 20.6.1
-generated: "2025-01-04T09:55:41.951781+08:00"
+generated: "2025-01-04T10:48:42.239629+08:00"
