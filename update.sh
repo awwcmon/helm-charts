@@ -1,4 +1,5 @@
 #!/bin/zsh
+set -eux -o pipefail
 name=$1
 if [ $# -eq 0 ];then
   echo "usages:\n $0 packagename"
