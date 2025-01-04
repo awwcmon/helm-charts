@@ -1,0 +1,232 @@
+apiVersion: v1
+entries:
+  mongo:
+  - annotations:
+      category: Database
+      images: |
+        - name: kubectl
+          image: docker.io/bitnami/kubectl:1.31.3-debian-12-r1
+        - name: mongodb
+          image: docker.io/bitnami/mongodb:8.0.4-debian-12-r0
+        - name: mongodb-exporter
+          image: docker.io/bitnami/mongodb-exporter:0.43.0-debian-12-r0
+        - name: nginx
+          image: docker.io/bitnami/nginx:1.27.3-debian-12-r0
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r33
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 8.0.4
+    created: "2025-01-04T13:30:32.063158+08:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: MongoDB(R) is a relational open source NoSQL database. Easy to use,
+      it stores data in JSON-like documents. Automated scalability and high-performance.
+      Ideal for developing cloud native applications.
+    digest: a9b14d36d5576ebbf649e4fc3f5a694bd9ceac92102278d9688435c87d630266
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
+    keywords:
+    - mongodb
+    - database
+    - nosql
+    - cluster
+    - replicaset
+    - replication
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: mongo
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/mongodb
+    urls:
+    - https://awwcmon.github.io/helm-charts/charts/charts/mongo-16.4.0.tgz
+    version: 16.4.0
+  mysql:
+  - annotations:
+      category: Database
+      images: |
+        - name: mysql
+          image: docker.io/bitnami/mysql:8.4.3-debian-12-r4
+        - name: mysqld-exporter
+          image: docker.io/bitnami/mysqld-exporter:0.16.0-debian-12-r2
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r33
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 8.4.3
+    created: "2025-01-04T13:30:32.066757+08:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: MySQL is a fast, reliable, scalable, and easy to use open source
+      relational database system. Designed to handle mission-critical, heavy-load
+      production applications.
+    digest: abbadeb57fbe62b01260404598066419995ab7383d5b6ecdb7f1736a7f4ca82e
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/mysql/img/mysql-stack-220x234.png
+    keywords:
+    - mysql
+    - database
+    - sql
+    - cluster
+    - high availability
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: mysql
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/mysql
+    urls:
+    - https://awwcmon.github.io/helm-charts/charts/charts/mysql-12.2.0.tgz
+    version: 12.2.0
+  nfs-client:
+  - apiVersion: v1
+    appVersion: 4.0.2
+    created: "2025-01-04T13:30:32.067104+08:00"
+    description: nfs-subdir-external-provisioner is an automatic provisioner that
+      used your *already configured* NFS server, automatically creating Persistent
+      Volumes.
+    digest: bc8261ecb0a4f6f1e942c3026b261d2fbd11ee7736729cb71e3df305e022c087
+    home: https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
+    keywords:
+    - nfs
+    - storage
+    - provisioner
+    kubeVersion: '>=1.9.0-0'
+    name: nfs-client
+    sources:
+    - https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
+    urls:
+    - https://awwcmon.github.io/helm-charts/charts/charts/nfs-client-4.0.18.tgz
+    version: 4.0.18
+  postgresql:
+  - annotations:
+      category: Database
+      images: |
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r34
+        - name: postgres-exporter
+          image: docker.io/bitnami/postgres-exporter:0.16.0-debian-12-r2
+        - name: postgresql
+          image: docker.io/bitnami/postgresql:17.2.0-debian-12-r5
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 17.2.0
+    created: "2025-01-04T13:30:32.070328+08:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: PostgreSQL (Postgres) is an open source object-relational database
+      known for reliability and data integrity. ACID-compliant, it supports foreign
+      keys, joins, views, triggers and stored procedures.
+    digest: 519ab687a3e82451ec3a1714f27b78ae0023d5ece02695c9f6ff318d23605884
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
+    keywords:
+    - postgresql
+    - postgres
+    - database
+    - sql
+    - replication
+    - cluster
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: postgresql
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/postgresql
+    urls:
+    - https://awwcmon.github.io/helm-charts/charts/charts/postgresql-16.3.5.tgz
+    version: 16.3.5
+  rabbitmq:
+  - annotations:
+      category: Infrastructure
+      images: |
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r34
+        - name: rabbitmq
+          image: docker.io/bitnami/rabbitmq:4.0.5-debian-12-r0
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 4.0.5
+    created: "2025-01-04T13:30:32.07381+08:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: RabbitMQ is an open source general-purpose message broker that is
+      designed for consistent, highly-available messaging scenarios (both synchronous
+      and asynchronous).
+    digest: d410f4c42e3dabcd58ffd014ad7deae64851cc5cfb35a2ef24aec8dafbc53f50
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/rabbitmq/img/rabbitmq-stack-220x234.png
+    keywords:
+    - rabbitmq
+    - message queue
+    - AMQP
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: rabbitmq
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq
+    urls:
+    - https://awwcmon.github.io/helm-charts/charts/charts/rabbitmq-15.2.1.tgz
+    version: 15.2.1
+  redis:
+  - annotations:
+      category: Database
+      images: |
+        - name: kubectl
+          image: docker.io/bitnami/kubectl:1.32.0-debian-12-r0
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r34
+        - name: redis
+          image: docker.io/bitnami/redis:7.4.1-debian-12-r3
+        - name: redis-exporter
+          image: docker.io/bitnami/redis-exporter:1.67.0-debian-12-r0
+        - name: redis-sentinel
+          image: docker.io/bitnami/redis-sentinel:7.4.1-debian-12-r3
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 7.4.1
+    created: "2025-01-04T13:30:32.07758+08:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Redis(R) is an open source, advanced key-value store. It is often
+      referred to as a data structure server since keys can contain strings, hashes,
+      lists, sets and sorted sets.
+    digest: 3f2e9a41a9420b5c36c3e9d5cfe37c00a9652f726f20902574b858769e414b5b
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: redis
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/redis
+    urls:
+    - https://awwcmon.github.io/helm-charts/charts/charts/redis-20.6.1.tgz
+    version: 20.6.1
+generated: "2025-01-04T13:30:32.057317+08:00"
