@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -eux -o pipefail
-packages=$(find packages -maxdepth 1 -type d ! -name ".*" ! -name "charts" ! -name "packages" |xargs)
-helm package $packages --destination ./charts
+charts=$(find charts -maxdepth 1 -type d ! -name ".*" ! -name "charts" ! -name "packages" |xargs)
+helm package $charts --destination ./packages
 helm repo index .
 git add .
 git commit -m "update charts"
