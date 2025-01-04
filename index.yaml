@@ -1,0 +1,87 @@
+apiVersion: v1
+entries:
+  mysql:
+  - annotations:
+      category: Database
+      images: |
+        - name: mysql
+          image: docker.io/bitnami/mysql:8.4.3-debian-12-r4
+        - name: mysqld-exporter
+          image: docker.io/bitnami/mysqld-exporter:0.16.0-debian-12-r2
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r33
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 8.4.3
+    created: "2025-01-04T09:55:41.956002+08:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: MySQL is a fast, reliable, scalable, and easy to use open source
+      relational database system. Designed to handle mission-critical, heavy-load
+      production applications.
+    digest: f0089aa8c996999b279d325c3c117639499978092137fc1b2551a45ff7c10088
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/mysql/img/mysql-stack-220x234.png
+    keywords:
+    - mysql
+    - database
+    - sql
+    - cluster
+    - high availability
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: mysql
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/mysql
+    urls:
+    - mysql-12.2.0.tgz
+    version: 12.2.0
+  redis:
+  - annotations:
+      category: Database
+      images: |
+        - name: kubectl
+          image: docker.io/bitnami/kubectl:1.32.0-debian-12-r0
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r34
+        - name: redis
+          image: docker.io/bitnami/redis:7.4.1-debian-12-r3
+        - name: redis-exporter
+          image: docker.io/bitnami/redis-exporter:1.67.0-debian-12-r0
+        - name: redis-sentinel
+          image: docker.io/bitnami/redis-sentinel:7.4.1-debian-12-r3
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 7.4.1
+    created: "2025-01-04T09:55:41.962601+08:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Redis(R) is an open source, advanced key-value store. It is often
+      referred to as a data structure server since keys can contain strings, hashes,
+      lists, sets and sorted sets.
+    digest: 9dfb5ffa00741995859f19c0931e4871cc05de2fc1c23413791b6718a476f326
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: redis
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/redis
+    urls:
+    - redis-20.6.1.tgz
+    version: 20.6.1
+generated: "2025-01-04T09:55:41.951781+08:00"
