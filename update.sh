@@ -1,12 +1,9 @@
 #!/bin/zsh
 set -eux -o pipefail
-name=$1
-if [ $# -eq 0 ];then
-  echo "usages:\n $0 packagename"
-fi
-helm package $name
+packages=$(find . -maxdepth 1 -type d ! -name ".*"|xargs)
+helm package $packages
 helm repo index .
 git add .
-git commit -m "add or update $name"
+git commit -m "update charts"
 git push
 helm repo update
