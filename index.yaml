@@ -17,7 +17,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.0.4
-    created: "2025-01-04T12:24:54.955861+08:00"
+    created: "2025-01-04T12:26:04.511322+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -63,7 +63,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.0.4
-    created: "2025-01-04T12:24:54.960182+08:00"
+    created: "2025-01-04T12:26:04.515662+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -105,7 +105,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.4.3
-    created: "2025-01-04T12:24:54.963839+08:00"
+    created: "2025-01-04T12:26:04.519277+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -133,10 +133,30 @@ entries:
     urls:
     - mysql-12.2.0.tgz
     version: 12.2.0
+  nfs-client:
+  - apiVersion: v1
+    appVersion: 4.0.2
+    created: "2025-01-04T12:26:04.519671+08:00"
+    description: nfs-subdir-external-provisioner is an automatic provisioner that
+      used your *already configured* NFS server, automatically creating Persistent
+      Volumes.
+    digest: 2cc2f45ee2e86badd0ea1bf1560c3e7be32feb855f6eacc58e5657fab708eef9
+    home: https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
+    keywords:
+    - nfs
+    - storage
+    - provisioner
+    kubeVersion: '>=1.9.0-0'
+    name: nfs-client
+    sources:
+    - https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
+    urls:
+    - nfs-client-4.0.18.tgz
+    version: 4.0.18
   nfs-provisioner:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2025-01-04T12:24:54.964406+08:00"
+    created: "2025-01-04T12:26:04.520211+08:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -156,7 +176,7 @@ entries:
   nfs-subdir-external-provisioner:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2025-01-04T12:24:54.965108+08:00"
+    created: "2025-01-04T12:26:04.520977+08:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -186,7 +206,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 17.2.0
-    created: "2025-01-04T12:24:54.969487+08:00"
+    created: "2025-01-04T12:26:04.524763+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -226,7 +246,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 4.0.5
-    created: "2025-01-04T12:24:54.972387+08:00"
+    created: "2025-01-04T12:26:04.527546+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -269,7 +289,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 7.4.1
-    created: "2025-01-04T12:24:54.977772+08:00"
+    created: "2025-01-04T12:26:04.533043+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -295,4 +315,4 @@ entries:
     urls:
     - redis-20.6.1.tgz
     version: 20.6.1
-generated: "2025-01-04T12:24:54.94884+08:00"
+generated: "2025-01-04T12:26:04.504074+08:00"

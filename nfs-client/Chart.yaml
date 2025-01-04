@@ -7,7 +7,7 @@ keywords:
 - storage
 - provisioner
 kubeVersion: '>=1.9.0-0'
-name: nfs-provisioner
+name: nfs-client
 sources:
 - https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
 version: 4.0.18
