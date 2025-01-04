@@ -1340,7 +1340,7 @@ persistence:
   ## @param persistence.mountPath Path to mount the volume at
   ## MongoDB(&reg;) images.
   ##
-  mountPath: /bitnami/mongodb
+  mountPath: /data/db
   ## @param persistence.subPath Subdirectory of the volume to mount at
   ## and one PV for multiple services.
   ##
