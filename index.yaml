@@ -17,7 +17,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.0.4
-    created: "2025-01-04T11:21:39.067245+08:00"
+    created: "2025-01-04T11:31:42.583778+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -27,7 +27,7 @@ entries:
     description: MongoDB(R) is a relational open source NoSQL database. Easy to use,
       it stores data in JSON-like documents. Automated scalability and high-performance.
       Ideal for developing cloud native applications.
-    digest: 797bdf99fd80da129613c76563581cfabb08e23166b47ee7e56b462a2a5fa246
+    digest: 87dea4978236e78b346f7cb6945ffe7ada944d65f8b27fe6136252ee000a9b58
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
     keywords:
@@ -59,7 +59,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.4.3
-    created: "2025-01-04T11:21:39.071227+08:00"
+    created: "2025-01-04T11:31:42.587636+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -100,7 +100,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 17.2.0
-    created: "2025-01-04T11:21:39.074815+08:00"
+    created: "2025-01-04T11:31:42.592138+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -140,7 +140,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 4.0.5
-    created: "2025-01-04T11:21:39.077917+08:00"
+    created: "2025-01-04T11:31:42.595014+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -183,7 +183,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 7.4.1
-    created: "2025-01-04T11:21:39.085706+08:00"
+    created: "2025-01-04T11:31:42.59952+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -209,4 +209,4 @@ entries:
     urls:
     - redis-20.6.1.tgz
     version: 20.6.1
-generated: "2025-01-04T11:21:39.061237+08:00"
+generated: "2025-01-04T11:31:42.578211+08:00"
