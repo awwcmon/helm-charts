@@ -36,7 +36,7 @@ controller:
     # -- Controller image registry
     registry: "docker.io"
     # -- Controller image repository
-    repository: "sheer/jenkins"
+    repository: "jenkins/jenkins"
 
     # -- Controller image tag override; i.e., tag: "2.440.1-jdk17"
     tag:
