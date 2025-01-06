@@ -136,7 +136,7 @@ spec:
                         --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
                         --namespace ${params.NAMESPACE}
 
-                        timeout 10 kubectl get pods school -w
+                        timeout 13 kubectl get pods school -w
                         """
                     }
                 }
