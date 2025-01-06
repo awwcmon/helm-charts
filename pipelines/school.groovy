@@ -38,11 +38,11 @@ pipeline {
                         file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
                             sh '''
                             chmod 600 $KUBECONFIG_PATH $DOCKER_CONFIG_PATH
+                            export KUBECONFIG=${KUBECONFIG_PATH}
                             kubectl get nodes
                             helm repo add $CHART_REPO_NAME $CHART_URL
                             helm repo update
                             cat $DOCKER_CONFIG_PATH
-                            export KUBECONFIG=${KUBECONFIG_PATH}
                             docker login
                             '''
                         }
