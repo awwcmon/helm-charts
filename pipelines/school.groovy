@@ -32,19 +32,19 @@ pipeline {
             steps {
                 script{
                     echo ".......prepare dockerconfig and kubeconfig......."
-                    sh '''
-                    mkdir -p $(dirname ${KUBECONFIG_PATH}) $(dirname ${DOCKER_CONFIG_PATH})
-                    '''
+                    sh """
+                    mkdir -p \$(dirname ${KUBECONFIG_PATH}) \$(dirname ${DOCKER_CONFIG_PATH})
+                    """
                     withCredentials([
                         file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
                         file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
-                            sh '''
+                            sh """
                             set -x
                             chmod 600 ${KUBECONFIG_PATH} ${DOCKER_CONFIG_PATH}
                             export KUBECONFIG=${KUBECONFIG_PATH}
-                            helm repo add $CHART_REPO_NAME $CHART_URL
+                            helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                             helm repo update
-                            '''
+                            """
                         }
                     }
             }
