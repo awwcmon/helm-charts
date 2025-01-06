@@ -7,19 +7,30 @@ kind: Pod
 spec:
   containers:
   - name: sheer-tools
-    image: sheer/tools:latest
-    command:
-    - /bin/sh
-    - -c
-    - "cat /etc/passwd && ls /"
-    tty: true
+    image: sheer/tools
+    volumeMounts:
+    - name: dockerconfig
+      mountPath: ~/.docker
+      readOnly: true
+    - name: kubeconfig
+      mountPath: ~/.kube
+      readOnly: true
+  volumes:
+  - name: dockerconfig
+    secret:
+      secretName: dockerconfig
+  - name: kubeconfig
+    secret:
+      secretName: kubeconfig
 """
         }
     }
     stages {
         stage('Run in Kubernetes Pod') {
             steps {
-                    sh 'echo "Running in Kubernetes Pod!"'
+                sh """
+                docker login
+                """
             }
         }
     }
