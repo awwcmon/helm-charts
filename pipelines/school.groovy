@@ -22,8 +22,8 @@ pipeline {
         DOCKERPATH = '/home/jenkins/.docker'
         KUBECONFIG_PATH = "/home/jenkins/.kube/kubeconfig.yaml"
         DOCKER_CONFIG_PATH = "/home/jenkins/.docker/config.json"
-        DOCKERUSERCONFIG='dockeruserconfig'
-        KUBECONFIG='kubeconfig'
+        DOCKERUSERCONFIG = 'dockeruserconfig'
+        KUBECONFIG = 'kubeconfig'
     }
     stages {
         stage('prepare'){
@@ -31,18 +31,28 @@ pipeline {
                 expression { !params.SKIP_PREPARE }
             }
             steps {
-                withCredentials([
-                    file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
-                    file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]){
-                    sh '''
-                    export KUBECONFIG=${KUBECONFIG_PATH}
-                    ls -al ~/.kube ~/.docker
-                    docker login
-                    kubectl get nodes
-                    helm repo add $CHART_REPO_NAME $CHART_URL
-                    helm repo update
-                    '''
-                }
+                script{
+                    withCredentials([
+                        file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
+                        file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
+                            sh '''
+                            echo "Checking if files are correctly loaded..."
+                            echo "Kubeconfig Path: $KUBECONFIG_PATH"
+                            echo "Docker Config Path: $DOCKER_CONFIG_PATH"
+                            echo "Kubeconfig content:"
+                            cat  $KUBECONFIG_PATH
+                            echo "Docker Config content:"
+                            cat $DOCKER_CONFIG_PATH
+
+                            export KUBECONFIG=${KUBECONFIG_PATH}
+                            ls -al ~/.kube ~/.docker
+                            docker login
+                            kubectl get nodes
+                            helm repo add $CHART_REPO_NAME $CHART_URL
+                            helm repo update
+                            '''
+                        }
+                    }
             }
         }
         stage('pull') {
