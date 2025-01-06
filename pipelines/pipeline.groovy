@@ -37,9 +37,7 @@ spec:
         stage('Run in Kubernetes Pod') {
             steps {
                 sh """
-                who
-                . /etc/profile
-                id
+                env
                 docker images
                 docker ps
                 kubectl get nodes
