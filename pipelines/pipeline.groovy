@@ -16,7 +16,8 @@ spec:
       mountPath: /home/jenkins/.kube
       readOnly: true
     command:
-    - /usr/local/bin/jenkins-agent
+    - cat
+    tty: true
   volumes:
   - name: dockerconfig
     secret:
@@ -31,7 +32,7 @@ spec:
         stage('Run in Kubernetes Pod') {
             steps {
                 sh """
-                docker login
+                echo "haha"
                 """
             }
         }
