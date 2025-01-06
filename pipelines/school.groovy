@@ -41,7 +41,7 @@ pipeline {
             when {
                 expression { !params.SKIP_BUILD }
             }
-           steps {
+            steps {
                 script {
                     echo ".......Building the project from branch: ${GIT_BRANCH}......."
                     sh """
@@ -55,15 +55,14 @@ pipeline {
             when {
                 expression { !params.SKIP_PUSH }
             }
-           steps {
+            steps {
                 script {
-                    withCredentials([
-                        file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH')]){
-                            sh """
-                            export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
-                            docker login
-                            docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
-                            """
+                    withCredentials([file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH')]){
+                        sh """
+                        export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
+                        docker login
+                        docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
+                        """
                     }
                 }
             }
@@ -72,7 +71,7 @@ pipeline {
             when {
                 expression { !params.SKIP_DEPLOY }
             }
-           steps {
+            steps {
                 script {
                     echo ".......deploy......."
                     withCredentials([file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]){
