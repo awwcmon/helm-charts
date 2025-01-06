@@ -6,18 +6,18 @@ pipeline {
         booleanParam(name: 'SKIP_BUILD', defaultValue: true, description: 'Skip the build stage')
         booleanParam(name: 'SKIP_PUSH', defaultValue: true, description: 'Skip the push stage')
         booleanParam(name: 'SKIP_DEPLOY', defaultValue: false, description: 'Skip the deploy stage')
+        string(name: 'GIT_URL', defaultValue: 'https://github.com/awwcmon/school.git', description: 'GIT_URL')
+        string(name: 'IMAGE_NAME', defaultValue: 'school', description: 'IMAGE_NAME')
+        string(name: 'RELEASE_NAME', defaultValue: '', description: 'RELEASE_NAME')
+        string(name: 'APP_NAME', defaultValue: 'school', description: 'APP_NAME')
+        string(name: 'NAMESPACE', defaultValue: 'default', description: 'NAMESPACE')
+        string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'IMAGE_TAG')
     }
     environment {
-        GIT_URL = 'https://github.com/awwcmon/school.git'
         GIT_BRANCH = 'main'
         CHART_URL = 'https://awwcmon.github.io/helm-charts'
         CHART_REPO_NAME ='qing'
-        APPNAME = 'school'
-        RELEASE_NAME = ''
-        NAMESPACE = 'default'
         DOCKER_REGISTRY = 'docker.io'
-        IMAGE_NAME = 'school'
-        IMAGE_TAG = 'latest'
         KUBECONFIG_PATH = "/home/jenkins/.kube/kubeconfig.yaml"
         DOCKER_CONFIG_PATH = "/home/jenkins/.docker/config.json"
         DOCKERUSERCONFIG = 'dockeruserconfig'
@@ -58,7 +58,7 @@ pipeline {
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: "${GIT_BRANCH}"]],
-                    userRemoteConfigs: [[url: "${GIT_URL}"]]
+                    userRemoteConfigs: [[url: "${params.GIT_URL}"]]
                 ])
             }
         }
@@ -83,7 +83,7 @@ pipeline {
                 script {
                     echo "Building the project from branch: ${GIT_BRANCH}"
                     sh '''
-                    docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${IMAGE_NAME}:${IMAGE_TAG}
+                    docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}:${{params.IMAGE_TAG}}
                     '''
                 }
             }
@@ -96,7 +96,7 @@ pipeline {
                 script {
                     echo "deploy"
                     sh '''
-                    helm upgrade --install $APPNAME$RELEASE_NAME $CHART_REPO_NAME/$APPNAME --namespace $NAMESPACE
+                    helm upgrade --install ${params.APP_NAME}${params.RELEASE_NAME} $CHART_REPO_NAME/${params.APP_NAME} --namespace ${params.NAMESPACE}
                     '''
                 }
             }
