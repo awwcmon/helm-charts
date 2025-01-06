@@ -34,9 +34,7 @@ pipeline {
             }
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_CONTENT')]) {
-                        writeFile file: env.KUBECONFIG_PATH, text: KUBECONFIG_CONTENT
-                    }
+                    withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG_PATH')]) {
                     sh '''
                     mkdir -p ~/.docker
                     echo $DOCKER_USERINFO | base64 -d > ~/.docker/config.json
