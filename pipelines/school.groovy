@@ -58,7 +58,7 @@ pipeline {
            steps {
                 script {
                     withCredentials([
-                        file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH')]) {
+                        file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH')]){
                             sh """
                             export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
                             docker login
