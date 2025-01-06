@@ -56,7 +56,7 @@ pipeline {
                 expression { !params.SKIP_PULL }
             }
             steps {
-                echo ".......pull code from $GIT_URL......."
+                echo ".......pull code from ${params.GIT_URL}......."
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: "${GIT_BRANCH}"]],
@@ -87,6 +87,7 @@ pipeline {
                     echo ".......docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}......."
                     sh """
                     set -x
+                    docker login
                     docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
                     """
                 }
