@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            label 'sheer-tools' // 引用预定义模板的 Label
+            inheritFrom 'sheer-tools' // 引用预定义模板的 Label
         }
     }
     stages {
