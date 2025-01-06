@@ -38,6 +38,7 @@ spec:
             steps {
                 sh """
                 who
+                . /etc/profile
                 id
                 docker images
                 docker ps
