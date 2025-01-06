@@ -39,7 +39,7 @@ pipeline {
                             sh '''
                             chmod 600 $KUBECONFIG_PATH $DOCKER_CONFIG_PATH
                             export KUBECONFIG=${KUBECONFIG_PATH}
-                            export DOCKER_CONFIG= $(dirname $DOCKER_CONFIG_PATH)
+                            export DOCKER_CONFIG=$(dirname $DOCKER_CONFIG_PATH)
                             kubectl get nodes
                             helm repo add $CHART_REPO_NAME $CHART_URL
                             helm repo update
