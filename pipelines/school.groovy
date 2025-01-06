@@ -24,7 +24,8 @@ pipeline {
         DOCKER_USERNAME='sheer'
         DOCKER_PASSWORD='awww8023.'
         DOCKER_USERINFO='ewoJImF1dGhzIjogewoJCSJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7CgkJCSJhdXRoIjogImMyaGxaWEk2WVhkM2R6Z3dNak11IgoJCX0sCgkJInJlZ2lzdHJ5LTEuZG9ja2VyLmlvOjQ0MyI6IHsKCQkJImF1dGgiOiAiYzJobFpYSTZZWGQzZHpnd01qTXUiCgkJfQoJfQp9'
-        KUBECONFIG_PATH = "${WORKSPACE}/kubeconfig.yaml"
+        KUBECONFIG_PATH = "~/.kube/kubeconfig.yaml"
+        DOCKER_CONFIG_PATH = "~/.docker/config.json"
     }
     stages {
 
@@ -34,13 +35,15 @@ pipeline {
             }
             steps{
                 script{
-                    withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG_PATH')]) {
                     sh '''
-                    mkdir -p ~/.docker
-                    echo $DOCKER_USERINFO | base64 -d > ~/.docker/config.json
-                    chmod 600 ~/.docker/config.json
-                    docker login
+                    mkdir -p ~/.kube  ~/.docker
+                    '''
+                    withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_PATH')]) {
+                    withCredentials([file(credentialsId: 'dockeruserconfig', variable: 'DOCKER_CONFIG_PATH')]) {
+                    sh '''
+                    # chmod 600 ~/.docker/config.json
                     export KUBECONFIG=${KUBECONFIG_PATH}
+                    docker login
                     kubectl get nodes
                     helm repo add $CHART_REPO_NAME $CHART_URL
                     helm repo update
