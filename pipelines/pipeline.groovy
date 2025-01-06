@@ -10,10 +10,10 @@ spec:
     image: sheer/tools
     volumeMounts:
     - name: dockerconfig
-      mountPath: ~/.docker
+      mountPath: /home/jenkins/.docker
       readOnly: true
     - name: kubeconfig
-      mountPath: ~/.kube
+      mountPath: /home/jenkins/.kube
       readOnly: true
   volumes:
   - name: dockerconfig
