@@ -5,6 +5,7 @@ pipeline {
         booleanParam(name: 'SKIP_BUILD', defaultValue: false, description: 'Skip the build stage')
         booleanParam(name: 'SKIP_PUSH', defaultValue: false, description: 'Skip the push stage')
         booleanParam(name: 'SKIP_DEPLOY', defaultValue: false, description: 'Skip the deploy stage')
+        string(name: 'BUILD_SCRIPT', defaultValue: 'scripts/image-build2.sh', description: 'image build script')
         string(name: 'GIT_URL', defaultValue: 'https://github.com/awwcmon/school.git', description: 'GIT_URL')
         string(name: 'IMAGE_NAME', defaultValue: 'school', description: 'IMAGE_NAME')
         string(name: 'RELEASE_NAME', defaultValue: '', description: 'RELEASE_NAME')
@@ -46,7 +47,7 @@ pipeline {
                     echo ".......Building the project from branch: ${GIT_BRANCH}......."
                     sh """
                     set -x
-                    sh scripts/image-build2.sh ${DOCKER_REGISTRY}
+                    sh ${BUILD_SCRIPT} ${DOCKER_REGISTRY}
                     """
                 }
             }
