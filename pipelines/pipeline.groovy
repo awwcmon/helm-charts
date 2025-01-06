@@ -74,8 +74,6 @@ spec:
             CHART_URL = 'https://awwcmon.github.io/helm-charts'
             CHART_REPO_NAME ='qing'
             DOCKER_REGISTRY = 'docker.io'
-            KUBECONFIG_PATH = "/home/jenkins/.kube/kubeconfig.yaml"
-            DOCKER_CONFIG_PATH = "/home/jenkins/.docker"
             DOCKER_USERNAME='sheer'
         }
         stages {
@@ -115,7 +113,6 @@ spec:
                         echo ".......docker push......."
                         sh """
                         set -x
-                        export DOCKER_CONFIG=${DOCKER_CONFIG_PATH}
                         docker login
                         docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
                         """
@@ -131,7 +128,6 @@ spec:
                         echo ".......deploy......."
                         sh """
                         set -x
-                        export KUBECONFIG=${KUBECONFIG_PATH}
                         helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                         helm repo update
                         helm upgrade \

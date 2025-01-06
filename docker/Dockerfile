@@ -63,9 +63,10 @@ COPY daemon.json /etc/docker/daemon.json
 #COPY docker-entrypoint.sh /usr/local/bin/
 RUN #chmod +x /usr/local/bin/docker-entrypoint.sh
 RUN usermod -aG root,sudo jenkins
-#ENV PATH=/usr/local/go/bin:$PATH
 RUN echo 'jenkins ALL=(ALL) NOPASSWD:ALL' | tee -a /etc/sudoers
 RUN sed -i '1a sudo nohup dockerd --storage-driver=vfs > /dev/null 2>&1 &' /usr/local/bin/jenkins-agent
+ENV KUBECONFIG=/home/jenkins/.kube/kubeconfig.yaml
+ENV DOCKER_CONFIG=/home/jenkins/.kube/config.json
 USER jenkins
 # 设置默认启动命令
 ENTRYPOINT ["/usr/local/bin/jenkins-agent"]
