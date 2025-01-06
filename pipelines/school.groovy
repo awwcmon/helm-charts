@@ -45,9 +45,9 @@ pipeline {
                             helm repo update
                             export KUBECONFIG=${KUBECONFIG_PATH}
                             export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
-                            stash  name: "kubeconfig" include: ${KUBECONFIG_PATH}
                             """
                         }
+                        stash  name: "kubeconfig" include: ${KUBECONFIG_PATH}
                     }
             }
         }
@@ -103,10 +103,10 @@ pipeline {
             }
            steps {
                 script {
+                    unstash kubeconfig
                     echo ".......deploy......."
                     sh """
                     set -x
-                    unstash kubeconfig
                     helm upgrade --kubeconfig=${KUBECONFIG_PATH} \
                     --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
                     --namespace ${params.NAMESPACE}
