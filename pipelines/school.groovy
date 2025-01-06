@@ -42,7 +42,7 @@ pipeline {
                     withCredentials([file(credentialsId: "${dockeruserconfig}", variable: 'DOCKER_CONFIG_PATH')]) {
                     sh '''
                     who
-                    ls -al .kube .docker
+                    ls -al ~/.kube ~/.docker
                     chmod 600 $DOCKER_CONFIG_PATH $KUBECONFIG_PATH
                     export KUBECONFIG=${KUBECONFIG_PATH}
                     docker login
