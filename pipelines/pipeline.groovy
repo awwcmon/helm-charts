@@ -113,6 +113,7 @@ spec:
                         echo ".......docker push......."
                         sh """
                         set -x
+                        #export DOCKER_CONFIG=/home/jenkins/.docker
                         docker login
                         docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
                         """
@@ -128,7 +129,7 @@ spec:
                         echo ".......deploy......."
                         sh """
                         set -x
-                        #export KUBECONFIG=~/.kube/kubeconfig.yaml
+                        #export KUBECONFIG=/home/jenkins/.kube/kubeconfig.yaml
                         helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                         helm repo update
                         helm upgrade \

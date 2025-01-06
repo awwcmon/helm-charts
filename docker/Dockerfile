@@ -66,7 +66,7 @@ RUN usermod -aG root,sudo jenkins
 RUN echo 'jenkins ALL=(ALL) NOPASSWD:ALL' | tee -a /etc/sudoers
 RUN sed -i '1a sudo nohup dockerd --storage-driver=vfs > /dev/null 2>&1 &' /usr/local/bin/jenkins-agent
 ENV KUBECONFIG=/home/jenkins/.kube/kubeconfig.yaml
-ENV DOCKER_CONFIG=/home/jenkins/.kube/config.json
+ENV DOCKER_CONFIG=/home/jenkins/.docker
 USER jenkins
 # 设置默认启动命令
 ENTRYPOINT ["/usr/local/bin/jenkins-agent"]
