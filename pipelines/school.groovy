@@ -59,6 +59,7 @@ pipeline {
                 script {
                     withCredentials([file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH')]){
                         sh """
+                        set -x
                         export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
                         docker login
                         docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
@@ -76,6 +77,7 @@ pipeline {
                     echo ".......deploy......."
                     withCredentials([file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]){
                         sh """
+                        set -x
                         export KUBECONFIG=${KUBECONFIG_PATH}
                         helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                         helm repo update
