@@ -42,10 +42,8 @@ pipeline {
                             set -x
                             chmod 600 ${KUBECONFIG_PATH} ${DOCKER_CONFIG_PATH}
                             export KUBECONFIG=${KUBECONFIG_PATH}
-                            export DOCKER_CONFIG=$(dirname ${DOCKER_CONFIG_PATH})
                             helm repo add $CHART_REPO_NAME $CHART_URL
                             helm repo update
-                            docker login
                             '''
                         }
                     }
@@ -87,6 +85,7 @@ pipeline {
                     echo ".......docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}......."
                     sh """
                     set -x
+                    export DOCKER_CONFIG=$(dirname ${DOCKER_CONFIG_PATH})
                     docker login
                     docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
                     """
