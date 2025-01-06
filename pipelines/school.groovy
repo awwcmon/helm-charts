@@ -31,21 +31,21 @@ pipeline {
             steps {
                 script{
                     echo ".......prepare dockerconfig and kubeconfig......."
-                    sh """
-                    mkdir -p $(dirname $KUBECONFIG_PATH) $(dirname $DOCKER_CONFIG_PATH)
-                    """
+                    sh '''
+                    mkdir -p $(dirname ${KUBECONFIG_PATH)} $(dirname ${DOCKER_CONFIG_PATH})
+                    '''
                     withCredentials([
                         file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
                         file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
-                            sh """
+                            sh '''
                             set -x
-                            chmod 600 $KUBECONFIG_PATH $DOCKER_CONFIG_PATH
+                            chmod 600 ${KUBECONFIG_PATH} ${DOCKER_CONFIG_PATH}
                             export KUBECONFIG=${KUBECONFIG_PATH}
-                            export DOCKER_CONFIG=$(dirname $DOCKER_CONFIG_PATH)
+                            export DOCKER_CONFIG=$(dirname ${DOCKER_CONFIG_PATH})
                             helm repo add $CHART_REPO_NAME $CHART_URL
                             helm repo update
                             docker login
-                            """
+                            '''
                         }
                     }
             }
@@ -86,7 +86,7 @@ pipeline {
                     echo ".......docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}......."
                     sh """
                     set -x
-                    docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}:${params.IMAGE_TAG}
+                    docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
                     """
                 }
             }
