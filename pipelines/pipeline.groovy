@@ -5,8 +5,11 @@ pipeline {
 apiVersion: "v1"
 kind: "Pod"
 metadata:
+annotations:
+    kubernetes.jenkins.io/last-refresh: "1736173871371"
 labels:
     jenkins/jenkins-jenkins-agent: "true"
+    jenkins/label-digest: "500b4f18aee87616849e4f4c2435020898e34aa0"
     jenkins/label: "jenkins-jenkins-agent"
     kubernetes.jenkins.io/controller: "http___jenkins_default_svc_cluster_local_8080x"
 name: "default-4rzsg"
@@ -14,7 +17,7 @@ namespace: "default"
 spec:
 containers:
 - args:
-    - "/usr/local/bin/jenkins-agent"
+    - /usr/local/bin/jenkins-agent
     - "default-4rzsg"
     env:
     - name: "JENKINS_SECRET"
