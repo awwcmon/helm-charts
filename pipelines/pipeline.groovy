@@ -128,6 +128,7 @@ spec:
                         echo ".......deploy......."
                         sh """
                         set -x
+                        echo $KUBECONFIG
                         helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                         helm repo update
                         helm upgrade \
