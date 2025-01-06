@@ -96,7 +96,9 @@ pipeline {
                 script {
                     echo "deploy"
                     sh '''
-                    helm upgrade --install ${params.APP_NAME}${params.RELEASE_NAME} $CHART_REPO_NAME/${params.APP_NAME} --namespace ${params.NAMESPACE}
+                    helm upgrade --kubeconfig=${DOCKER_CONFIG_PATH} \
+                    --install ${params.APP_NAME}${params.RELEASE_NAME} $CHART_REPO_NAME/${params.APP_NAME} \
+                    --namespace ${params.NAMESPACE}
                     '''
                 }
             }
