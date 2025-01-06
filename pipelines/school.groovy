@@ -98,7 +98,7 @@ pipeline {
                 script {
                     echo "deploy"
                     sh '''
-                    helm upgrade --install --kuberconfig=~/.kube/kuberconfig.yaml $APPNAME$RELEASE_NAME $CHART_REPO_NAME/$APPNAME --namespace $NAMESPACE
+                    helm upgrade --install $APPNAME$RELEASE_NAME $CHART_REPO_NAME/$APPNAME --namespace $NAMESPACE
                     '''
                 }
             }
