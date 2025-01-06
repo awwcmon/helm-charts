@@ -18,8 +18,6 @@ pipeline {
         DOCKER_REGISTRY = 'docker.io'
         IMAGE_NAME = 'school'
         IMAGE_TAG = 'latest'
-        KUBEPATH = '/home/jenkins/.kube'
-        DOCKERPATH = '/home/jenkins/.docker'
         KUBECONFIG_PATH = "/home/jenkins/.kube/kubeconfig.yaml"
         DOCKER_CONFIG_PATH = "/home/jenkins/.docker/config.json"
         DOCKERUSERCONFIG = 'dockeruserconfig'
@@ -32,18 +30,15 @@ pipeline {
             }
             steps {
                 script{
+                    sh '''
+                    mkdir -p $KUBEPATH DOCKERPATH
+                    '''
                     withCredentials([
                         file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
                         file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
                             sh '''
-                            echo "Checking if files are correctly loaded..."
-                            echo "Kubeconfig Path: $KUBECONFIG_PATH"
-                            echo "Docker Config Path: $DOCKER_CONFIG_PATH"
-                            echo "Kubeconfig content:"
-                            cat  $KUBECONFIG_PATH
-                            echo "Docker Config content:"
-                            cat $DOCKER_CONFIG_PATH
-
+                            mkdir -p $(dirname $KUBECONFIG_PATH)
+                            mkdir -p $(dirname $DOCKER_CONFIG_PATH)
                             export KUBECONFIG=${KUBECONFIG_PATH}
                             ls -al ~/.kube ~/.docker
                             docker login
