@@ -31,22 +31,21 @@ pipeline {
             steps {
                 script{
                     echo ".......prepare dockerconfig and kubeconfig......."
-                    sh '''
-                    #!/bin/bash
+                    sh """
                     mkdir -p $(dirname $KUBECONFIG_PATH) $(dirname $DOCKER_CONFIG_PATH)
-                    '''
+                    """
                     withCredentials([
                         file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
                         file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
-                            sh '''
-                            #!/bin/bash
+                            sh """
+                            set -x
                             chmod 600 $KUBECONFIG_PATH $DOCKER_CONFIG_PATH
                             export KUBECONFIG=${KUBECONFIG_PATH}
                             export DOCKER_CONFIG=$(dirname $DOCKER_CONFIG_PATH)
                             helm repo add $CHART_REPO_NAME $CHART_URL
                             helm repo update
                             docker login
-                            '''
+                            """
                         }
                     }
             }
@@ -71,11 +70,10 @@ pipeline {
            steps {
                 script {
                     echo ".......Building the project from branch: ${GIT_BRANCH}......."
-                    sh '''
-                    #!/bin/bash
+                    sh """
                     set -x
                     sh scripts/image-build2.sh ${DOCKER_REGISTRY}
-                    '''
+                    """
                 }
             }
         }
@@ -85,12 +83,11 @@ pipeline {
             }
            steps {
                 script {
-                    echo ".......Building the project from branch: ${GIT_BRANCH}......."
-                    sh '''
-                    #!/bin/bash
+                    echo ".......docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}......."
+                    sh """
                     set -x
-                    docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}:${{params.IMAGE_TAG}}
-                    '''
+                    docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}:${params.IMAGE_TAG}
+                    """
                 }
             }
         }
@@ -101,13 +98,12 @@ pipeline {
            steps {
                 script {
                     echo ".......deploy......."
-                    sh '''
-                    #!/bin/bash
+                    sh """
                     set -x
                     helm upgrade --kubeconfig=${DOCKER_CONFIG_PATH} \
                     --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
                     --namespace ${params.NAMESPACE}
-                    '''
+                    """
                 }
             }
         }
