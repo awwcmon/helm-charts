@@ -19,6 +19,7 @@ spec:
     - ls &&
     - cat /home/jenkins/.docker/config.json
     - && pwd
+    stdin: true
     tty: true
   volumes:
   - name: dockerconfig
