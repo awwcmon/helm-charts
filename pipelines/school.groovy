@@ -76,14 +76,14 @@ pipeline {
                 script {
                     echo ".......deploy......."
                     withCredentials([file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]){
-                            sh """
-                            export KUBECONFIG=${KUBECONFIG_PATH}
-                            helm repo add ${CHART_REPO_NAME} ${CHART_URL}
-                            helm repo update
-                            helm upgrade \
-                            --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
-                            --namespace ${params.NAMESPACE}
-                            """
+                        sh """
+                        export KUBECONFIG=${KUBECONFIG_PATH}
+                        helm repo add ${CHART_REPO_NAME} ${CHART_URL}
+                        helm repo update
+                        helm upgrade \
+                        --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
+                        --namespace ${params.NAMESPACE}
+                        """
                     }
                 }
             }
