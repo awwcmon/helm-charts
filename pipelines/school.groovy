@@ -8,8 +8,6 @@ pipeline {
         booleanParam(name: 'SKIP_DEPLOY', defaultValue: false, description: 'Skip the deploy stage')
     }
     environment {
-        K8S_TOKEN = sh(script: 'cat /var/run/secrets/kubernetes.io/serviceaccount/token', returnStdout: true).trim()
-        K8S_CA_CERT = '/var/run/secrets/kubernetes.io/serviceaccount/ca.crt'
         GIT_URL = 'https://github.com/awwcmon/school.git'
         GIT_BRANCH = 'main'
         CHART_URL = 'https://awwcmon.github.io/helm-charts'
