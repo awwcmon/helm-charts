@@ -15,13 +15,6 @@ spec:
     - name: kubeconfig
       mountPath: /home/jenkins/.kube
       readOnly: true
-    #command:
-    #- sh
-    #- -c
-    #- |
-      #/usr/local/bin/jenkins-agent
-      #&& export DOCKER_CONFIG=/home/jenkins/.docker/config.json && \
-      #export KUBECONFIG=/home/jenkins/.kube/kubeconfig.json && docker login && cat
     securityContext:
       privileged: true
     stdin: true
@@ -40,7 +33,6 @@ spec:
         stage('Run in Kubernetes Pod') {
             steps {
                 sh """
-                env
                 docker images
                 docker ps
                 kubectl get nodes
