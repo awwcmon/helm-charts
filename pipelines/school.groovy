@@ -20,9 +20,6 @@ pipeline {
         DOCKER_REGISTRY = 'docker.io'
         IMAGE_NAME = 'school'
         IMAGE_TAG = 'latest'
-        DOCKER_USERNAME='sheer'
-        DOCKER_PASSWORD='awww8023.'
-        DOCKER_USERINFO='ewoJImF1dGhzIjogewoJCSJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7CgkJCSJhdXRoIjogImMyaGxaWEk2WVhkM2R6Z3dNak11IgoJCX0sCgkJInJlZ2lzdHJ5LTEuZG9ja2VyLmlvOjQ0MyI6IHsKCQkJImF1dGgiOiAiYzJobFpYSTZZWGQzZHpnd01qTXUiCgkJfQoJfQp9'
         KUBECONFIG_PATH = "~/.kube/kubeconfig.yaml"
         DOCKER_CONFIG_PATH = "~/.docker/config.json"
     }
