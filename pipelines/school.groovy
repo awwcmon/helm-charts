@@ -45,8 +45,6 @@ pipeline {
                 '''
             }
         }
-    }
-        }
         stage('pull') {
             when {
                 expression { !params.SKIP_PULL }
