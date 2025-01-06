@@ -46,8 +46,8 @@ pipeline {
                             export KUBECONFIG=${KUBECONFIG_PATH}
                             export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
                             """
+                            stash  name: "kubeconfig" include: ${KUBECONFIG_PATH}
                         }
-                        stash  name: "kubeconfig" include: ${KUBECONFIG_PATH}
                     }
             }
         }
