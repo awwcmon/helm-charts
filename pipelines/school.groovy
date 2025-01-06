@@ -41,12 +41,11 @@ pipeline {
                             sh """
                             set -x
                             chmod 600 ${KUBECONFIG_PATH} ${DOCKER_CONFIG_PATH}
-                            export KUBECONFIG=${KUBECONFIG_PATH}
                             helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                             helm repo update
+                            export KUBECONFIG=${KUBECONFIG_PATH}
                             export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
-                            docker login
-                            docker info
+                            stash  name: "kubeconfig" include: ${KUBECONFIG_PATH}
                             """
                         }
                     }
@@ -107,7 +106,8 @@ pipeline {
                     echo ".......deploy......."
                     sh """
                     set -x
-                    helm upgrade --kubeconfig=${DOCKER_CONFIG_PATH} \
+                    unstash kubeconfig
+                    helm upgrade --kubeconfig=${KUBECONFIG_PATH} \
                     --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
                     --namespace ${params.NAMESPACE}
                     """
