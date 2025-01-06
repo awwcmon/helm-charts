@@ -24,6 +24,8 @@ pipeline {
         DOCKERPATH = '/home/jenkins/.docker'
         KUBECONFIG_PATH = "/home/jenkins/.kube/kubeconfig.yaml"
         DOCKER_CONFIG_PATH = "/home/jenkins/.docker/config.json"
+        dockeruserconfig='dockeruserconfig'
+        kubeconfig='kubeconfig'
     }
     stages {
         stage('prepare'){
@@ -31,24 +33,19 @@ pipeline {
                 expression { !params.SKIP_PREPARE }
             }
             steps{
-                script{
-                    sh '''
-                    set -x
-                    mkdir -p $DOCKERPATH $KUBEPATH
-                    '''
-                    withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_PATH')]) {
-                    withCredentials([file(credentialsId: 'dockeruserconfig', variable: 'DOCKER_CONFIG_PATH')]) {
-                    sh '''
-                    id
-                    ls -al $DOCKERPATH $KUBEPATH
-                    chmod 600 $DOCKER_CONFIG_PATH $KUBECONFIG_PATH
-                    export KUBECONFIG=${KUBECONFIG_PATH}
-                    docker login
-                    kubectl get nodes
-                    helm repo add $CHART_REPO_NAME $CHART_URL
-                    helm repo update
-                    '''
-                }
+                withCredentials([
+                file(credentialsId: env.dockeruserconfig, variable: 'DOCKER_CONFIG_PATH'),
+                file(credentialsId: env.kubeconfig, variable: 'KUBECONFIG_PATH')]) {
+                sh '''
+                id
+                ls -al $DOCKERPATH $KUBEPATH
+                chmod 600 $DOCKER_CONFIG_PATH $KUBECONFIG_PATH
+                export KUBECONFIG=${KUBECONFIG_PATH}
+                docker login
+                kubectl get nodes
+                helm repo add $CHART_REPO_NAME $CHART_URL
+                helm repo update
+                '''
             }
         }
     }
