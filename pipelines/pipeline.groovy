@@ -19,7 +19,8 @@ spec:
     - sh
     - -c
     - |
-      /usr/local/bin/jenkins-agent
+      echo $PATH && ls /usr/bin/docker && ls /usr/local/bin/docker
+      #/usr/local/bin/jenkins-agent
       #&& export DOCKER_CONFIG=/home/jenkins/.docker/config.json && \
       #export KUBECONFIG=/home/jenkins/.kube/kubeconfig.json && docker login && cat
     stdin: true
