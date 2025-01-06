@@ -16,7 +16,7 @@ spec:
       mountPath: /home/jenkins/.kube
       readOnly: true
     command:
-    - cat
+    - /usr/local/bin/jenkins-agent
     tty: true
   volumes:
   - name: dockerconfig
