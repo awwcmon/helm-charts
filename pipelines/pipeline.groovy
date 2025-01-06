@@ -60,8 +60,10 @@ spec:
         stage('Run in Kubernetes Pod') {
             steps {
                 sh """
-                docker images
-                docker ps
+                export KUBECONFIG=/home/jenkins/.kube/kubeconfig.yaml
+                export DOCKER_CONFIG=/home/jenkins/.docker
+                docker login
+                docker run hello-world
                 kubectl get nodes
                 """
             }
