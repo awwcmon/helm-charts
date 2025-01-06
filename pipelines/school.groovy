@@ -1,7 +1,6 @@
 pipeline {
     agent any
     parameters {
-        booleanParam(name: 'SKIP_PREPARE', defaultValue: false, description: 'Skip the prepare stage')
         booleanParam(name: 'SKIP_PULL', defaultValue: false, description: 'Skip the pull stage')
         booleanParam(name: 'SKIP_BUILD', defaultValue: false, description: 'Skip the build stage')
         booleanParam(name: 'SKIP_PUSH', defaultValue: false, description: 'Skip the push stage')
@@ -25,16 +24,6 @@ pipeline {
         DOCKER_USERNAME='sheer'
     }
     stages {
-        stage('prepare'){
-            when {
-                expression { !params.SKIP_PREPARE }
-            }
-            steps {
-                script{
-                    echo ".......prepare dockerconfig and kubeconfig......."
-                    }
-            }
-        }
         stage('pull') {
             when {
                 expression { !params.SKIP_PULL }
@@ -77,7 +66,7 @@ pipeline {
                             docker login
                             docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
                             """
-                         }
+                    }
                 }
             }
         }
@@ -100,7 +89,7 @@ pipeline {
                             --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
                             --namespace ${params.NAMESPACE}
                             """
-                        }
+                    }
                 }
             }
         }
