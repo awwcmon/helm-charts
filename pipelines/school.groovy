@@ -30,19 +30,19 @@ pipeline {
             when {
                 expression { !params.SKIP_PREPARE }
             }
-            steps{
+            steps {
                 withCredentials([
-                file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
-                file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
-                sh '''
-                export KUBECONFIG=${KUBECONFIG_PATH}
-                docker login
-                kubectl get nodes
-                helm repo add $CHART_REPO_NAME $CHART_URL
-                helm repo update
-                '''
+                    file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
+                    file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]){
+                    sh '''
+                    export KUBECONFIG=${KUBECONFIG_PATH}
+                    docker login
+                    kubectl get nodes
+                    helm repo add $CHART_REPO_NAME $CHART_URL
+                    helm repo update
+                    '''
+                }
             }
-        }
         }
         stage('pull') {
             when {
