@@ -35,6 +35,7 @@ pipeline {
             steps{
                 script{
                     sh '''
+                    set -x
                     mkdir -p $DOCKERPATH $KUBEPATH
                     '''
                     withCredentials([file(credentialsId: "${kubeconfig}", variable: 'KUBECONFIG_PATH')]) {
