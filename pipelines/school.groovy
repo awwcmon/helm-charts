@@ -57,6 +57,7 @@ pipeline {
             }
             steps {
                 script {
+                    echo ".......push image......."
                     withCredentials([file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH')]){
                         sh """
                         set -x
