@@ -1,16 +1,25 @@
 pipeline {
     agent {
         kubernetes {
-            inheritFrom 'sheer-tools' // 引用预定义模板的 Label
+            yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: sheer-tools
+    image: sheer/tools:latest
+    command:
+    - /bin/sh
+    - -c
+    - "cat /etc/passwd && ls /"
+    tty: true
+"""
         }
     }
     stages {
-        stage('Run in Predefined Pod Template') {
+        stage('Run in Kubernetes Pod') {
             steps {
-            sh """
-            cat /root/.kube/kuberconfig.yaml
-            cat /root/.docker/config.json
-            """
+                    sh 'echo "Running in Kubernetes Pod!"'
             }
         }
     }
