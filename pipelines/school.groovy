@@ -32,22 +32,6 @@ pipeline {
             steps {
                 script{
                     echo ".......prepare dockerconfig and kubeconfig......."
-                    sh """
-                    mkdir -p \$(dirname ${KUBECONFIG_PATH}) \$(dirname ${DOCKER_CONFIG_PATH})
-                    """
-                    withCredentials([
-                        file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
-                        file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
-                            sh """
-                            set -x
-                            chmod 600 ${KUBECONFIG_PATH} ${DOCKER_CONFIG_PATH}
-                            helm repo add ${CHART_REPO_NAME} ${CHART_URL}
-                            helm repo update
-                            export KUBECONFIG=${KUBECONFIG_PATH}
-                            export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
-                            """
-                            stash  name: "kubeconfig" include: "\${KUBECONFIG_PATH}"
-                        }
                     }
             }
         }
@@ -84,16 +68,19 @@ pipeline {
             }
            steps {
                 script {
-                    echo ".......docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}......."
-                    sh """
-                    set -x
-                    cat ${DOCKER_CONFIG_PATH}
-                    chmod 600 \$(dirname ${DOCKER_CONFIG_PATH})
-                    export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
-                    docker login
-                    docker info
-                    docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
-                    """
+                    withCredentials([
+                        file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH')]) {
+                            sh """
+                            set -x
+                            chmod 600 ${DOCKER_CONFIG_PATH}
+                            export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
+                            docker login
+                            """
+                            sh """
+                            set -x
+                            docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
+                            """
+                         }
                 }
             }
         }
@@ -103,14 +90,23 @@ pipeline {
             }
            steps {
                 script {
-                    unstash kubeconfig
                     echo ".......deploy......."
-                    sh """
-                    set -x
-                    helm upgrade --kubeconfig=${KUBECONFIG_PATH} \
-                    --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
-                    --namespace ${params.NAMESPACE}
-                    """
+                    withCredentials([
+                        file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
+                            sh """
+                            set -x
+                            chmod 600 ${KUBECONFIG_PATH}
+                            export KUBECONFIG=${KUBECONFIG_PATH}
+                            """
+                            sh """
+                            set -x
+                            helm repo add ${CHART_REPO_NAME} ${CHART_URL}
+                            helm repo update
+                            helm upgrade \
+                            --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
+                            --namespace ${params.NAMESPACE}
+                            """
+                         }
                 }
             }
         }
