@@ -47,7 +47,7 @@ pipeline {
                     echo ".......Building the project from branch: ${GIT_BRANCH}......."
                     sh """
                     set -x
-                    sh ${BUILD_SCRIPT} ${DOCKER_REGISTRY}
+                    sh ${params.BUILD_SCRIPT} ${DOCKER_REGISTRY}
                     """
                 }
             }
