@@ -37,7 +37,9 @@ spec:
         stage('Run in Kubernetes Pod') {
             steps {
                 sh """
-                echo "haha"
+                docker images
+                docker ps
+                kubectl get nodes
                 """
             }
         }
