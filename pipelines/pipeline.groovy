@@ -20,7 +20,7 @@ spec:
     - -c
     - |
       /usr/local/bin/jenkins-agent && export DOCKER_CONFIG=/home/jenkins/.docker/config.json && \
-      export KUBECONFIG=/home/jenkins/.kube/kubeconfig.json && cat
+      export KUBECONFIG=/home/jenkins/.kube/kubeconfig.json && docker login && cat
     stdin: true
     tty: true
   volumes:
