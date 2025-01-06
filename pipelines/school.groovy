@@ -44,7 +44,9 @@ pipeline {
                             export KUBECONFIG=${KUBECONFIG_PATH}
                             helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                             helm repo update
+                            export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
                             docker login
+                            docker info
                             """
                         }
                     }
