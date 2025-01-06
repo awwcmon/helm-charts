@@ -128,7 +128,7 @@ spec:
                         echo ".......deploy......."
                         sh """
                         set -x
-                        echo $KUBECONFIG
+                        export KUBECONFIG=~/.kube/kubeconfig.yaml
                         helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                         helm repo update
                         helm upgrade \
