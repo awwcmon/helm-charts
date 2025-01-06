@@ -88,6 +88,7 @@ pipeline {
                     echo ".......docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}......."
                     sh """
                     set -x
+                    chmod 600 \$(dirname ${DOCKER_CONFIG_PATH})
                     export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
                     docker login
                     docker info
