@@ -19,7 +19,7 @@ spec:
     - sh
     - -c
     - |
-      ls && cat /home/jenkins/.docker/config.json && pwd
+      ls && cat /home/jenkins/.docker/config.json && pwd && cat
     stdin: true
     tty: true
   volumes:
