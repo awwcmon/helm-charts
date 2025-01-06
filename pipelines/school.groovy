@@ -30,6 +30,7 @@ pipeline {
             }
             steps {
                 script{
+                    echo ".......prepare dockerconfig and kubeconfig......."
                     sh '''
                     mkdir -p $(dirname $KUBECONFIG_PATH) $(dirname $DOCKER_CONFIG_PATH)
                     '''
@@ -53,6 +54,7 @@ pipeline {
                 expression { !params.SKIP_PULL }
             }
             steps {
+                echo ".......pull code from $GIT_URL......."
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: "${GIT_BRANCH}"]],
@@ -66,8 +68,9 @@ pipeline {
             }
            steps {
                 script {
-                    echo "Building the project from branch: ${GIT_BRANCH}"
+                    echo ".......Building the project from branch: ${GIT_BRANCH}......."
                     sh '''
+                    set -x
                     sh scripts/image-build2.sh ${DOCKER_REGISTRY}
                     '''
                 }
@@ -79,8 +82,9 @@ pipeline {
             }
            steps {
                 script {
-                    echo "Building the project from branch: ${GIT_BRANCH}"
+                    echo ".......Building the project from branch: ${GIT_BRANCH}......."
                     sh '''
+                    set -x
                     docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}:${{params.IMAGE_TAG}}
                     '''
                 }
@@ -92,7 +96,9 @@ pipeline {
             }
            steps {
                 script {
+                    echo ".......deploy......."
                     sh '''#!/bin/bash
+                    set -x
                     helm upgrade --kubeconfig=${DOCKER_CONFIG_PATH} \
                     --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
                     --namespace ${params.NAMESPACE}
