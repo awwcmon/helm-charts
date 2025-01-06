@@ -75,9 +75,6 @@ pipeline {
                             chmod 600 ${DOCKER_CONFIG_PATH}
                             export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
                             docker login
-                            """
-                            sh """
-                            set -x
                             docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
                             """
                          }
@@ -97,16 +94,13 @@ pipeline {
                             set -x
                             chmod 600 ${KUBECONFIG_PATH}
                             export KUBECONFIG=${KUBECONFIG_PATH}
-                            """
-                            sh """
-                            set -x
                             helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                             helm repo update
                             helm upgrade \
                             --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
                             --namespace ${params.NAMESPACE}
                             """
-                         }
+                        }
                 }
             }
         }
