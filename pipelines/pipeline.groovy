@@ -16,9 +16,10 @@ spec:
       mountPath: /home/jenkins/.kube
       readOnly: true
     command:
-    - ls &&
-    - cat /home/jenkins/.docker/config.json
-    - && pwd
+    - sh
+    - -c
+    - |
+      ls && cat /home/jenkins/.docker/config.json && pwd
     stdin: true
     tty: true
   volumes:
