@@ -32,7 +32,7 @@ pipeline {
                 script{
                     echo ".......prepare dockerconfig and kubeconfig......."
                     sh '''
-                    mkdir -p $(dirname ${KUBECONFIG_PATH)} $(dirname ${DOCKER_CONFIG_PATH})
+                    mkdir -p $(dirname ${KUBECONFIG_PATH}) $(dirname ${DOCKER_CONFIG_PATH})
                     '''
                     withCredentials([
                         file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
