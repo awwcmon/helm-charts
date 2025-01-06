@@ -80,8 +80,6 @@ pipeline {
                     withCredentials([
                         file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
                             sh """
-                            set -x
-                            chmod 600 ${KUBECONFIG_PATH}
                             export KUBECONFIG=${KUBECONFIG_PATH}
                             helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                             helm repo update
