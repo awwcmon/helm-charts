@@ -60,8 +60,6 @@ pipeline {
                     withCredentials([
                         file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH')]) {
                             sh """
-                            set -x
-                            chmod 600 ${DOCKER_CONFIG_PATH}
                             export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
                             docker login
                             docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
