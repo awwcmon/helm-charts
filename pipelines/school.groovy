@@ -40,7 +40,9 @@ pipeline {
                     withCredentials([file(credentialsId: "${kubeconfig}", variable: 'KUBECONFIG_PATH')]) {
                     withCredentials([file(credentialsId: "${dockeruserconfig}", variable: 'DOCKER_CONFIG_PATH')]) {
                     sh '''
+                    ls -l ~/.kube ~/.docker
                     chmod 600 $DOCKER_CONFIG_PATH $KUBECONFIG_PATH
+                    ls -l ~/.kube ~/.docker
                     export KUBECONFIG=${KUBECONFIG_PATH}
                     docker login
                     kubectl get nodes
