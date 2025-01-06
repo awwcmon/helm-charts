@@ -20,7 +20,6 @@ spec:
     - -c
     - |
       ls && /usr/local/bin/jenkins-agent && cat /home/jenkins/.docker/config.json && pwd && cat
-    tty: true
   volumes:
   - name: dockerconfig
     secret:
