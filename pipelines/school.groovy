@@ -82,10 +82,10 @@ pipeline {
             }
            steps {
                 script {
-                    echo ".......docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}......."
+                    echo ".......docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}......."
                     sh """
                     set -x
-                    export DOCKER_CONFIG=$(dirname ${DOCKER_CONFIG_PATH})
+                    export DOCKER_CONFIG=\$(dirname ${DOCKER_CONFIG_PATH})
                     docker login
                     docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
                     """
