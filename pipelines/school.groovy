@@ -75,8 +75,7 @@ pipeline {
            steps {
                 script {
                     echo ".......deploy......."
-                    withCredentials([
-                        file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
+                    withCredentials([file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]){
                             sh """
                             export KUBECONFIG=${KUBECONFIG_PATH}
                             helm repo add ${CHART_REPO_NAME} ${CHART_URL}
