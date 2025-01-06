@@ -1,70 +1,24 @@
 pipeline {
-    agent {
-        kubernetes {
-            yaml """
-apiVersion: "v1"
-kind: "Pod"
-metadata:
-  labels:
-    jenkins/jenkins-jenkins-agent: "true"
-    jenkins/label: "jenkins-jenkins-agent"
-  name: "new-pipeline"
-  namespace: "default"
-spec:
-  containers:
-  - args:
-    - "/usr/local/bin/jenkins-agent"
-    image: "sheer/tools:latest"
-    imagePullPolicy: "IfNotPresent"
-    name: "jnlp"
-    resources:
-      limits:
-        memory: "1024Mi"
-        cpu: "1024m"
-      requests:
-        memory: "512Mi"
-        cpu: "512m"
-    securityContext:
-      privileged: true
-    tty: true
-    volumeMounts:
-    - mountPath: "/home/jenkins/.kube"
-      name: "kubeconfig"
-      readOnly: true
-    - mountPath: "/home/jenkins/.docker"
-      name: "dockerconfig"
-      readOnly: true
-    - mountPath: "/home/jenkins/agent"
-      name: "workspace-volume"
-      readOnly: false
-    workingDir: "/home/jenkins/agent"
-  hostNetwork: false
-  nodeSelector:
-    kubernetes.io/os: "linux"
-  restartPolicy: "Never"
-  serviceAccountName: "default"
-  volumes:
-  - emptyDir:
-      medium: ""
-    name: "workspace-volume"
-  - name: kubeconfig
-    secret:
-      secretName: kubeconfig
-  - name: dockerconfig
-    secret:
-      secretName: dockerconfig
-"""
-        }
-    }
+    agent none
     stages {
-        stage('Run in Kubernetes Pod') {
+        stage('Download Pod Template from GitHub') {
             steps {
+                script {
+                    // 从 GitHub 上下载 YAML 文件
+                    sh 'curl -o sheer-tools.yaml https://raw.githubusercontent.com/awwcmon/helm-charts/refs/heads/main/pipelines/sheer-tools.yaml'
+                }
+            }
+        }
+        stage('Run in Kubernetes Pod') {
+            agent {
+                kubernetes {
+                    yamlFile 'sheer-tools.yaml'
+                }
+            }
+            steps {
+                // 在 Kubernetes Pod 中执行任务
                 sh """
-                export KUBECONFIG=/home/jenkins/.kube/kubeconfig.yaml
-                export DOCKER_CONFIG=/home/jenkins/.docker
-                docker login
-                docker run hello-world
-                kubectl get nodes
+                docker images
                 """
             }
         }
