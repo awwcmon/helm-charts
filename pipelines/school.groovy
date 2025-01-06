@@ -1,6 +1,6 @@
 pipeline {
     agent any
-        parameters {
+    parameters {
         booleanParam(name: 'SKIP_PREPARE', defaultValue: true, description: 'Skip the prepare stage')
         booleanParam(name: 'SKIP_PULL', defaultValue: true, description: 'Skip the pull stage')
         booleanParam(name: 'SKIP_BUILD', defaultValue: true, description: 'Skip the build stage')
@@ -28,7 +28,6 @@ pipeline {
         DOCKER_CONFIG_PATH = "~/.docker/config.json"
     }
     stages {
-
         stage('prepare'){
             when {
                 expression { !params.SKIP_PREPARE }
@@ -50,6 +49,8 @@ pipeline {
                     '''
                 }
             }
+        }
+    }
         }
         stage('pull') {
             when {
