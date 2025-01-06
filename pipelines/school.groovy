@@ -24,8 +24,6 @@ pipeline {
         DOCKERPATH = '/home/jenkins/.docker'
         KUBECONFIG_PATH = "/home/jenkins/.kube/kubeconfig.yaml"
         DOCKER_CONFIG_PATH = "/home/jenkins/.docker/config.json"
-        kubeconfig='kubeconfig'
-        dockeruserconfig='dockeruserconfig'
     }
     stages {
         stage('prepare'){
