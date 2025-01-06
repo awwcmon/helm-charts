@@ -20,8 +20,12 @@ pipeline {
         DOCKER_REGISTRY = 'docker.io'
         IMAGE_NAME = 'school'
         IMAGE_TAG = 'latest'
-        KUBECONFIG_PATH = "~/.kube/kubeconfig.yaml"
-        DOCKER_CONFIG_PATH = "~/.docker/config.json"
+        KUBEPATH = '~/.kube'
+        DOCKERPATH = '~/.docker'
+        KUBECONFIG_PATH = "$KUBEPATH/kubeconfig.yaml"
+        DOCKER_CONFIG_PATH = "$DOCKERPATH/config.json"
+        kubeconfig='kubeconfig'
+        dockeruserconfig='dockeruserconfig'
     }
     stages {
         stage('prepare'){
@@ -31,10 +35,10 @@ pipeline {
             steps{
                 script{
                     sh '''
-                    mkdir -p ~/.kube  ~/.docker
+                    mkdir -p $DOCKERPATH $KUBEPATH
                     '''
-                    withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_PATH')]) {
-                    withCredentials([file(credentialsId: 'dockeruserconfig', variable: 'DOCKER_CONFIG_PATH')]) {
+                    withCredentials([file(credentialsId: $kubeconfig, variable: 'KUBECONFIG_PATH')]) {
+                    withCredentials([file(credentialsId: $dockeruserconfig, variable: 'DOCKER_CONFIG_PATH')]) {
                     sh '''
                     chmod 600 $DOCKER_CONFIG_PATH $KUBECONFIG_PATH
                     export KUBECONFIG=${KUBECONFIG_PATH}
@@ -68,8 +72,7 @@ pipeline {
                 script {
                     echo "Building the project from branch: ${GIT_BRANCH}"
                     sh '''
-                    sh scripts/image-build2.sh docker.io
-                    ls
+                    sh scripts/image-build2.sh ${DOCKER_REGISTRY}
                     '''
                 }
             }
@@ -83,7 +86,6 @@ pipeline {
                     echo "Building the project from branch: ${GIT_BRANCH}"
                     sh '''
                     docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${IMAGE_NAME}:${IMAGE_TAG}
-                    ls
                     '''
                 }
             }
