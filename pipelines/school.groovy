@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        booleanParam(name: 'SKIP_PREPARE', defaultValue: true, description: 'Skip the prepare stage')
+        booleanParam(name: 'SKIP_PREPARE', defaultValue: false, description: 'Skip the prepare stage')
         booleanParam(name: 'SKIP_PULL', defaultValue: true, description: 'Skip the pull stage')
         booleanParam(name: 'SKIP_BUILD', defaultValue: true, description: 'Skip the build stage')
         booleanParam(name: 'SKIP_PUSH', defaultValue: true, description: 'Skip the push stage')
