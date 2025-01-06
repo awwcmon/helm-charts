@@ -24,6 +24,7 @@ pipeline {
         DOCKER_USERNAME='sheer'
         DOCKER_PASSWORD='awww8023.'
         DOCKER_USERINFO='ewoJImF1dGhzIjogewoJCSJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7CgkJCSJhdXRoIjogImMyaGxaWEk2WVhkM2R6Z3dNak11IgoJCX0sCgkJInJlZ2lzdHJ5LTEuZG9ja2VyLmlvOjQ0MyI6IHsKCQkJImF1dGgiOiAiYzJobFpYSTZZWGQzZHpnd01qTXUiCgkJfQoJfQp9'
+        KUBECONFIG_PATH = "${WORKSPACE}/kubeconfig.yaml"
     }
     stages {
 
@@ -33,16 +34,16 @@ pipeline {
             }
             steps{
                 script{
+                    withCredentials([string(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_CONTENT')]) {
+                        writeFile file: env.KUBECONFIG_PATH, text: KUBECONFIG_CONTENT
+                    }
                     sh '''
                     mkdir -p ~/.docker
                     echo $DOCKER_USERINFO | base64 -d > ~/.docker/config.json
                     chmod 600 ~/.docker/config.json
                     docker login
-
-                    mkdir -p ~/.kube/
-                    echo $KUBECONFIGSTR | base64 -d > ~/.kube/kuberconfig.yaml
-                    chmod 600 ~/.kube/kuberconfig.yaml
-                    export KUBECONFIG=~/.kube/kuberconfig.yaml
+                    export KUBECONFIG=${KUBECONFIG_PATH}
+                    kubectl get nodes
                     helm repo add $CHART_REPO_NAME $CHART_URL
                     helm repo update
                     '''
@@ -97,7 +98,7 @@ pipeline {
                 script {
                     echo "deploy"
                     sh '''
-                    helm upgrade --install $APPNAME$RELEASE_NAME $CHART_REPO_NAME/$APPNAME --namespace $NAMESPACE
+                    helm upgrade --install --kuberconfig=~/.kube/kuberconfig.yaml $APPNAME$RELEASE_NAME $CHART_REPO_NAME/$APPNAME --namespace $NAMESPACE
                     '''
                 }
             }
