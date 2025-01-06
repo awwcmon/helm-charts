@@ -31,16 +31,13 @@ pipeline {
             steps {
                 script{
                     sh '''
-                    mkdir -p $KUBEPATH DOCKERPATH
+                    mkdir -p $(dirname $KUBECONFIG_PATH) $(dirname $DOCKER_CONFIG_PATH)
                     '''
                     withCredentials([
                         file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
                         file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
                             sh '''
-                            mkdir -p $(dirname $KUBECONFIG_PATH)
-                            mkdir -p $(dirname $DOCKER_CONFIG_PATH)
                             export KUBECONFIG=${KUBECONFIG_PATH}
-                            ls -al ~/.kube ~/.docker
                             docker login
                             kubectl get nodes
                             helm repo add $CHART_REPO_NAME $CHART_URL
