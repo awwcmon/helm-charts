@@ -15,6 +15,8 @@ spec:
     - name: kubeconfig
       mountPath: /home/jenkins/.kube
       readOnly: true
+    command:
+    - /usr/local/bin/jenkins-agent
   volumes:
   - name: dockerconfig
     secret:
