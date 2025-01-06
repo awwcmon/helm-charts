@@ -18,7 +18,6 @@ spec:
   containers:
   - args:
     - "/usr/local/bin/jenkins-agent"
-    - "default-4rzsg"
     env:
     - name: "JENKINS_SECRET"
       value: "********"
