@@ -5,36 +5,45 @@ pipeline {
 apiVersion: "v1"
 kind: "Pod"
 metadata:
-annotations:
-    kubernetes.jenkins.io/last-refresh: "1736173871371"
-labels:
+  labels:
     jenkins/jenkins-jenkins-agent: "true"
-name: "default-4rzsg"
-namespace: "default"
+    jenkins/label: "jenkins-jenkins-agent"
+  name: "new-pipeline"
+  namespace: "default"
 spec:
-containers:
-- args:
-    - /usr/local/bin/jenkins-agent
+  containers:
+  - args:
+    - "/usr/local/bin/jenkins-agent"
     env:
+    - name: "JENKINS_URL"
+      value: "http://jenkins.default.svc.cluster.local:8080/"
     image: "sheer/tools:latest"
     imagePullPolicy: "IfNotPresent"
     name: "jnlp"
     resources:
-    limits:
+      limits:
         memory: "2048Mi"
         cpu: "2048m"
-    requests:
+      requests:
         memory: "1024Mi"
         cpu: "1024m"
     securityContext:
-    privileged: true
+      privileged: true
     tty: true
     volumeMounts:
     - mountPath: "/home/jenkins/agent"
-    name: "workspace-volume"
-    readOnly: false
+      name: "workspace-volume"
+      readOnly: false
     workingDir: "/home/jenkins/agent"
-serviceAccountName: "default"
+  hostNetwork: false
+  nodeSelector:
+    kubernetes.io/os: "linux"
+  restartPolicy: "Never"
+  serviceAccountName: "default"
+  volumes:
+  - emptyDir:
+      medium: ""
+    name: "workspace-volume"
 """
         }
     }
