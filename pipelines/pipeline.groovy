@@ -13,6 +13,9 @@ name: "default-4rzsg"
 namespace: "default"
 spec:
 containers:
+- args:
+    - "/usr/local/bin/jenkins-agent"
+    - "default-4rzsg"
     env:
     - name: "JENKINS_SECRET"
     value: "********"
@@ -36,8 +39,8 @@ containers:
         memory: "2048Mi"
         cpu: "2048m"
     requests:
-        memory: "512Mi"
-        cpu: "512m"
+        memory: "1024Mi"
+        cpu: "1024m"
     securityContext:
     privileged: true
     tty: true
