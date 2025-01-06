@@ -18,8 +18,8 @@ pipeline {
         CHART_URL = 'https://awwcmon.github.io/helm-charts'
         CHART_REPO_NAME ='qing'
         DOCKER_REGISTRY = 'docker.io'
-        KUBECONFIG_PATH = "/home/jenkins/.kube/kubeconfig.yaml"
-        DOCKER_CONFIG_PATH = "/home/jenkins/.docker/config.json"
+        KUBECONFIG_PATH = ""
+        DOCKER_CONFIG_PATH = ""
         DOCKERUSERCONFIG = 'dockeruserconfig'
         KUBECONFIG = 'kubeconfig'
         DOCKER_USERNAME='sheer'
