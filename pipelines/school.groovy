@@ -22,8 +22,8 @@ pipeline {
         DOCKERPATH = '/home/jenkins/.docker'
         KUBECONFIG_PATH = "/home/jenkins/.kube/kubeconfig.yaml"
         DOCKER_CONFIG_PATH = "/home/jenkins/.docker/config.json"
-        dockeruserconfig='dockeruserconfig'
-        kubeconfig='kubeconfig'
+        DOCKERUSERCONFIG='dockeruserconfig'
+        KUBECONFIG='kubeconfig'
     }
     stages {
         stage('prepare'){
@@ -32,8 +32,8 @@ pipeline {
             }
             steps{
                 withCredentials([
-                file(credentialsId: env.dockeruserconfig, variable: 'DOCKER_CONFIG_PATH'),
-                file(credentialsId: env.kubeconfig, variable: 'KUBECONFIG_PATH')]) {
+                file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
+                file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
                 sh '''
                 export KUBECONFIG=${KUBECONFIG_PATH}
                 docker login
