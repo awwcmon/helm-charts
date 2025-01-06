@@ -2,9 +2,9 @@ pipeline {
     agent any
     parameters {
         booleanParam(name: 'SKIP_PREPARE', defaultValue: false, description: 'Skip the prepare stage')
-        booleanParam(name: 'SKIP_PULL', defaultValue: true, description: 'Skip the pull stage')
-        booleanParam(name: 'SKIP_BUILD', defaultValue: true, description: 'Skip the build stage')
-        booleanParam(name: 'SKIP_PUSH', defaultValue: true, description: 'Skip the push stage')
+        booleanParam(name: 'SKIP_PULL', defaultValue: false, description: 'Skip the pull stage')
+        booleanParam(name: 'SKIP_BUILD', defaultValue: false, description: 'Skip the build stage')
+        booleanParam(name: 'SKIP_PUSH', defaultValue: false, description: 'Skip the push stage')
         booleanParam(name: 'SKIP_DEPLOY', defaultValue: false, description: 'Skip the deploy stage')
         string(name: 'GIT_URL', defaultValue: 'https://github.com/awwcmon/school.git', description: 'GIT_URL')
         string(name: 'IMAGE_NAME', defaultValue: 'school', description: 'IMAGE_NAME')
