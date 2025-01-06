@@ -92,7 +92,7 @@ pipeline {
             }
            steps {
                 script {
-                    sh '''!/bin/bash
+                    sh '''#!/bin/bash
                     helm upgrade --kubeconfig=${DOCKER_CONFIG_PATH} \
                     --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
                     --namespace ${params.NAMESPACE}
