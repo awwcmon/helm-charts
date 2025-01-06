@@ -19,7 +19,10 @@ spec:
     - sh
     - -c
     - |
-      ls && /usr/local/bin/jenkins-agent && cat /home/jenkins/.docker/config.json && pwd && cat
+      /usr/local/bin/jenkins-agent && export DOCKER_CONFIG=/home/jenkins/.docker/config.json && \
+      export KUBECONFIG=/home/jenkins/.kube/kubeconfig.json && cat
+    stdin: true
+    tty: true
   volumes:
   - name: dockerconfig
     secret:
