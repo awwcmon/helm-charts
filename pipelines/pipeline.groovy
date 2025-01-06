@@ -135,6 +135,8 @@ spec:
                         helm upgrade \
                         --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
                         --namespace ${params.NAMESPACE}
+
+                        kubectl get pods school -w
                         """
                     }
                 }
