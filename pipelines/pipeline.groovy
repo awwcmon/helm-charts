@@ -17,7 +17,6 @@ spec:
       readOnly: true
     command:
     - /usr/local/bin/jenkins-agent
-    tty: true
   volumes:
   - name: dockerconfig
     secret:
