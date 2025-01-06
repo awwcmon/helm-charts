@@ -42,7 +42,7 @@ pipeline {
                     mkdir -p ~/.kube/
                     echo $KUBECONFIGSTR | base64 -d > ~/.kube/kuberconfig.yaml
                     chmod 600 ~/.kube/kuberconfig.yaml
-                    export KUBECONFIG = ~/.kube/kuberconfig.yaml
+                    export KUBECONFIG=~/.kube/kuberconfig.yaml
                     helm repo add $CHART_REPO_NAME $CHART_URL
                     helm repo update
                     '''
