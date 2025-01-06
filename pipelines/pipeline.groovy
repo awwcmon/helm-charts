@@ -7,7 +7,7 @@ kind: Pod
 spec:
   containers:
   - name: sheer-tools
-    image: sheer/tools
+    image: sheer/tools:latest
     volumeMounts:
     - name: dockerconfig
       mountPath: /home/jenkins/.docker
