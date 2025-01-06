@@ -13,19 +13,6 @@ metadata:
   namespace: "default"
 spec:
   containers:
-    env:
-    - name: "JENKINS_TUNNEL"
-      value: "jenkins-agent.default.svc.cluster.local:50000"
-    - name: "JENKINS_AGENT_NAME"
-      value: "default-4rzsg"
-    - name: "REMOTING_OPTS"
-      value: "-noReconnectAfter 1d"
-    - name: "JENKINS_NAME"
-      value: "default-4rzsg"
-    - name: "JENKINS_AGENT_WORKDIR"
-      value: "/home/jenkins/agent"
-    - name: "JENKINS_URL"
-      value: "http://jenkins.default.svc.cluster.local:8080/"
     image: "sheer/tools:latest"
     imagePullPolicy: "IfNotPresent"
     name: "jnlp"
