@@ -32,12 +32,14 @@ pipeline {
                 script{
                     echo ".......prepare dockerconfig and kubeconfig......."
                     sh '''
+                    #!/bin/bash
                     mkdir -p $(dirname $KUBECONFIG_PATH) $(dirname $DOCKER_CONFIG_PATH)
                     '''
                     withCredentials([
                         file(credentialsId: env.DOCKERUSERCONFIG, variable: 'DOCKER_CONFIG_PATH'),
                         file(credentialsId: env.KUBECONFIG, variable: 'KUBECONFIG_PATH')]) {
                             sh '''
+                            #!/bin/bash
                             chmod 600 $KUBECONFIG_PATH $DOCKER_CONFIG_PATH
                             export KUBECONFIG=${KUBECONFIG_PATH}
                             export DOCKER_CONFIG=$(dirname $DOCKER_CONFIG_PATH)
@@ -70,6 +72,7 @@ pipeline {
                 script {
                     echo ".......Building the project from branch: ${GIT_BRANCH}......."
                     sh '''
+                    #!/bin/bash
                     set -x
                     sh scripts/image-build2.sh ${DOCKER_REGISTRY}
                     '''
@@ -84,6 +87,7 @@ pipeline {
                 script {
                     echo ".......Building the project from branch: ${GIT_BRANCH}......."
                     sh '''
+                    #!/bin/bash
                     set -x
                     docker push ${DOCKER_REGISTRY}/$DOCKER_USERNAME/${params.IMAGE_NAME}:${{params.IMAGE_TAG}}
                     '''
@@ -97,7 +101,8 @@ pipeline {
            steps {
                 script {
                     echo ".......deploy......."
-                    sh '''#!/bin/bash
+                    sh '''
+                    #!/bin/bash
                     set -x
                     helm upgrade --kubeconfig=${DOCKER_CONFIG_PATH} \
                     --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
