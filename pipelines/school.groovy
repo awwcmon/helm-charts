@@ -38,8 +38,8 @@ pipeline {
                     set -x
                     mkdir -p $DOCKERPATH $KUBEPATH
                     '''
-                    withCredentials([file(credentialsId: "${kubeconfig}", variable: 'KUBECONFIG_PATH')]) {
-                    withCredentials([file(credentialsId: "${dockeruserconfig}", variable: 'DOCKER_CONFIG_PATH')]) {
+                    withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_PATH')]) {
+                    withCredentials([file(credentialsId: 'dockeruserconfig', variable: 'DOCKER_CONFIG_PATH')]) {
                     sh '''
                     id
                     ls -al $DOCKERPATH $KUBEPATH
