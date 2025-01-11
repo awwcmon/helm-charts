@@ -127,7 +127,7 @@ spec:
                         sh """
                         set -x
                         make deploy CHART_REPO_NAME=${env.CHART_REPO_NAME} CHART_URL=${env.CHART_URL} \
-                        IMAGE_NAME=${params.IMAGE_NAME} TAG=${params.TAG} NAMESPACE=${env.NAMESPACE} \
+                        IMAGE_NAME=${params.IMAGE_NAME} NAMESPACE=${env.NAMESPACE} \
                         RELEASE_NAME=${params.RELEASE_NAME}
                         """
                     }
