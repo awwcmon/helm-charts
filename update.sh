@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -eux -o pipefail
 message="update charts"
-if [ $# -eq 1];then
+if [ $# -eq 1 ];then
    message=$1
 fi
 charts=$(find charts -maxdepth 1 -type d ! -name ".*" ! -name "charts" ! -name "packages" |xargs)
