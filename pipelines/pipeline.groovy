@@ -69,7 +69,7 @@ spec:
             GIT_BRANCH = 'main'
             CHART_URL = 'https://awwcmon.github.io/helm-charts'
             CHART_REPO_NAME ='qing'
-            REPO = 'docker.io'
+            REPO_HOST = 'docker.io'
             DOCKER_USERNAME='sheer'
             NAMESPACE = 'default'
         }
@@ -96,7 +96,7 @@ spec:
                         echo ".......Building the project from branch: ${GIT_BRANCH}......."
                         sh """
                         set -x
-                        make image-build REPO=${env.REPO} TAG=${params.TAG}
+                        make image-build REPO_HOST=${env.REPO_HOST} TAG=${params.TAG}
                         """
                     }
                 }
@@ -112,7 +112,7 @@ spec:
                         set -x
                         #export DOCKER_CONFIG=/home/jenkins/.docker
                         docker login
-                        make image-push REPO=${env.REPO} TAG=${params.TAG}
+                        make image-push REPO_HOST=${env.REPO_HOST} TAG=${params.TAG}
                         """
                     }
                 }
