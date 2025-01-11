@@ -131,6 +131,8 @@ spec:
                         helm upgrade \
                         --install ${params.IMAGE_NAME}${params.RELEASE_NAME}  ${CHART_REPO_NAME}/${params.IMAGE_NAME} \
                         --namespace=${env.NAMESPACE}
+                        sleep 3
+                        k get pods -n ${env.NAMESPACE}|grep ${params.IMAGE_NAME}
                         """
                     }
                 }
