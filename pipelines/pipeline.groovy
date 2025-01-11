@@ -62,7 +62,7 @@ spec:
             booleanParam(name: 'SKIP_PUSH', defaultValue: false, description: 'Skip the push stage')
             booleanParam(name: 'SKIP_DEPLOY', defaultValue: false, description: 'Skip the deploy stage')
             string(name: 'IMAGE_NAME', defaultValue: 'school', description: 'IMAGE_NAME')
-            string(name: 'TAG', defaultValue: 'latest', description: 'TAG')
+            string(name: 'TAG_NAME', defaultValue: 'latest', description: 'TAG_NAME')
             string(name: 'RELEASE_NAME', defaultValue: '', description: 'RELEASE_NAME')
         }
         environment {
@@ -96,7 +96,7 @@ spec:
                         echo ".......Building the project from branch: ${GIT_BRANCH}......."
                         sh """
                         set -x
-                        make image-build REPO_HOST=${env.REPO_HOST} TAG=${params.TAG}
+                        make image-build REPO_HOST=${env.REPO_HOST} TAG=${params.TAG_NAME}
                         """
                     }
                 }
@@ -112,7 +112,7 @@ spec:
                         set -x
                         #export DOCKER_CONFIG=/home/jenkins/.docker
                         docker login
-                        make image-push REPO_HOST=${env.REPO_HOST} TAG=${params.TAG}
+                        make image-push REPO_HOST=${env.REPO_HOST} TAG=${params.TAG_NAME}
                         """
                     }
                 }
