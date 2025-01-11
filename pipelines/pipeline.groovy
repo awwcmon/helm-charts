@@ -126,12 +126,7 @@ spec:
                         echo ".......deploy......."
                         sh """
                         set -x
-                        #export KUBECONFIG=/home/jenkins/.kube/kubeconfig.yaml
-                        helm repo add ${CHART_REPO_NAME} ${CHART_URL}
-                        helm repo update
-                        helm upgrade \
-                        --install ${params.IMAGE_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.IMAGE_NAME} \
-                        --namespace ${env.NAMESPACE}
+                        make deploy
                         timeout 13 kubectl get pods -w|grep school
                         """
                     }
