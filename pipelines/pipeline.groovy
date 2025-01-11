@@ -126,8 +126,9 @@ spec:
                         echo ".......deploy......."
                         sh """
                         set -x
-                        make deploy
-                        timeout 13 kubectl get pods -w|grep school
+                        make deploy CHART_REPO_NAME=${env.CHART_REPO_NAME} CHART_URL=${env.CHART_URL} \
+                        IMAGE_NAME=${params.IMAGE_NAME} TAG=${params.TAG} RELEASE_NAME=${params.RELEASE_NAME} \
+                        NAMESPACE=${env.NAMESPACE}
                         """
                     }
                 }
