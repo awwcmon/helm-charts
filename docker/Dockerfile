@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y \
 # 安装 kubectl
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl" && \
     chmod +x kubectl && mv kubectl /usr/local/bin/
+RUN apt-get update && apt-get install -y make gcc && apt-get clean
 
 # 安装 Helm
 RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
@@ -39,12 +40,14 @@ RUN which runc
 #RUN locate libip4tc.so.2
 # 第二阶段：基于 jenkins/inbound-agent 创建最终镜像
 # 第二阶段：基于 jenkins/inbound-agent 创建最终镜像
+RUN apt-get update && apt-get install -y make && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN ls /usr/share/man/man1/
 
 FROM jenkins/inbound-agent:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 USER root
-RUN apt-get update -y && apt-get install -y iptables sudo && \
+RUN apt-get update -y && apt-get install -y iptables sudo -y libc6  && \
 apt-get autoremove -y && \
 apt-get clean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -57,6 +60,7 @@ COPY --from=builder /usr/bin/docker* /usr/bin/
 COPY --from=builder /usr/bin/contain* /usr/bin/
 COPY --from=builder /usr/sbin/iptables /usr/sbin/iptables
 COPY --from=builder /usr/bin/runc /usr/bin/runc
+COPY --from=builder /usr/bin/make /usr/bin/make
 # 复制 Docker Daemon 配置文件
 COPY daemon.json /etc/docker/daemon.json
 # 配置 Docker Daemon 启动脚本

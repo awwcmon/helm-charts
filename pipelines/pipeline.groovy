@@ -61,19 +61,16 @@ spec:
             booleanParam(name: 'SKIP_BUILD', defaultValue: false, description: 'Skip the build stage')
             booleanParam(name: 'SKIP_PUSH', defaultValue: false, description: 'Skip the push stage')
             booleanParam(name: 'SKIP_DEPLOY', defaultValue: false, description: 'Skip the deploy stage')
-            string(name: 'BUILD_SCRIPT', defaultValue: 'scripts/image-build2.sh', description: 'image build script')
-            string(name: 'GIT_URL', defaultValue: 'https://github.com/awwcmon/school.git', description: 'GIT_URL')
-            string(name: 'IMAGE_NAME', defaultValue: 'school', description: 'IMAGE_NAME')
             string(name: 'RELEASE_NAME', defaultValue: '', description: 'RELEASE_NAME')
-            string(name: 'APP_NAME', defaultValue: 'school', description: 'APP_NAME')
             string(name: 'NAMESPACE', defaultValue: 'default', description: 'NAMESPACE')
-            string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'IMAGE_TAG')
+            string(name: 'IMAGE_NAME', defaultValue: 'school', description: 'IMAGE_NAME')
+            string(name: 'TAG', defaultValue: 'latest', description: 'TAG')
         }
         environment {
             GIT_BRANCH = 'main'
             CHART_URL = 'https://awwcmon.github.io/helm-charts'
             CHART_REPO_NAME ='qing'
-            DOCKER_REGISTRY = 'docker.io'
+            REPO = 'docker.io'
             DOCKER_USERNAME='sheer'
         }
         stages {
@@ -82,11 +79,11 @@ spec:
                     expression { !params.SKIP_PULL }
                 }
                 steps {
-                    echo ".......pull code from ${params.GIT_URL}......."
+                    echo ".......pull code from https://github.com/awwcmon/${params.IMAGE_NAME}.git......."
                     checkout([
                         $class: 'GitSCM',
                         branches: [[name: "${GIT_BRANCH}"]],
-                        userRemoteConfigs: [[url: "${params.GIT_URL}"]]
+                        userRemoteConfigs: [[url: "https://github.com/awwcmon/${params.IMAGE_NAME}.git"]]
                     ])
                 }
             }
@@ -99,7 +96,7 @@ spec:
                         echo ".......Building the project from branch: ${GIT_BRANCH}......."
                         sh """
                         set -x
-                        sh ${params.BUILD_SCRIPT} ${DOCKER_REGISTRY}
+                        make image-build REPO=${env.REPO} TAG=${params.TAG}
                         """
                     }
                 }
@@ -115,7 +112,7 @@ spec:
                         set -x
                         #export DOCKER_CONFIG=/home/jenkins/.docker
                         docker login
-                        docker push ${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${params.IMAGE_NAME}:${params.IMAGE_TAG}
+                        make image-push REPO=${env.REPO} TAG=${params.TAG}
                         """
                     }
                 }
@@ -133,9 +130,8 @@ spec:
                         helm repo add ${CHART_REPO_NAME} ${CHART_URL}
                         helm repo update
                         helm upgrade \
-                        --install ${params.APP_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.APP_NAME} \
+                        --install ${params.IMAGE_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.IMAGE_NAME} \
                         --namespace ${params.NAMESPACE}
-
                         timeout 13 kubectl get pods -w|grep school
                         """
                     }
