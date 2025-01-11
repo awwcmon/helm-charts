@@ -64,7 +64,6 @@ spec:
             string(name: 'IMAGE_NAME', defaultValue: 'school', description: 'IMAGE_NAME')
             string(name: 'TAG', defaultValue: 'latest', description: 'TAG')
             string(name: 'RELEASE_NAME', defaultValue: '', description: 'RELEASE_NAME')
-            string(name: 'NAMESPACE', defaultValue: 'default', description: 'NAMESPACE')
         }
         environment {
             GIT_BRANCH = 'main'
@@ -72,6 +71,7 @@ spec:
             CHART_REPO_NAME ='qing'
             REPO = 'docker.io'
             DOCKER_USERNAME='sheer'
+            NAMESPACE = 'default'
         }
         stages {
             stage('pull') {
@@ -131,7 +131,7 @@ spec:
                         helm repo update
                         helm upgrade \
                         --install ${params.IMAGE_NAME}${params.RELEASE_NAME} ${CHART_REPO_NAME}/${params.IMAGE_NAME} \
-                        --namespace ${params.NAMESPACE}
+                        --namespace ${env.NAMESPACE}
                         timeout 13 kubectl get pods -w|grep school
                         """
                     }
