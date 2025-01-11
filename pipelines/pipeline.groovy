@@ -61,10 +61,10 @@ spec:
             booleanParam(name: 'SKIP_BUILD', defaultValue: false, description: 'Skip the build stage')
             booleanParam(name: 'SKIP_PUSH', defaultValue: false, description: 'Skip the push stage')
             booleanParam(name: 'SKIP_DEPLOY', defaultValue: false, description: 'Skip the deploy stage')
-            string(name: 'RELEASE_NAME', defaultValue: '', description: 'RELEASE_NAME')
-            string(name: 'NAMESPACE', defaultValue: 'default', description: 'NAMESPACE')
             string(name: 'IMAGE_NAME', defaultValue: 'school', description: 'IMAGE_NAME')
             string(name: 'TAG', defaultValue: 'latest', description: 'TAG')
+            string(name: 'RELEASE_NAME', defaultValue: '', description: 'RELEASE_NAME')
+            string(name: 'NAMESPACE', defaultValue: 'default', description: 'NAMESPACE')
         }
         environment {
             GIT_BRANCH = 'main'
