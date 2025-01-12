@@ -32,7 +32,8 @@ spec:
             - name: school-vl
               mountPath: /app/configs
               readOnly: true
-
+            - name: school-vol
+              mountPath: /app/logs
           ports:
             - name: http-port
               containerPort: 8080
@@ -62,3 +63,18 @@ spec:
         - name: school-vl
           configMap:
             name: school-config
+        - name: school-vol
+          persistentVolumeClaim:
+            claimName: school-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: school-pvc
+spec:
+  accessModes:
+    - ReadWriteMany # 可根据需要调整，例如 ReadOnlyMany, ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi # 需要的存储大小
+  storageClassName: nfs-client # 引用上一步创建的 StorageClass
