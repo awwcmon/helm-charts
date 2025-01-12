@@ -22,11 +22,11 @@ entries:
           url: https://github.com/jenkinsci/helm-charts/issues
     apiVersion: v2
     appVersion: 2.479.2
-    created: "2025-01-12T12:31:14.031261+08:00"
+    created: "2025-01-12T12:36:45.835094+08:00"
     description: 'Jenkins - Build great things at any scale! As the leading open source
       automation server, Jenkins provides over 1800 plugins to support building, deploying
       and automating any project. '
-    digest: 99cd4f98ce13494a3eabd3f75767cc39e22a48b74d104bfdb8de61508f22ec53
+    digest: bcac9c70f7f6399ebc4ca7431b1a1e07d0af989a30f45aed7bb7c2b0365cca79
     home: https://www.jenkins.io/
     icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
     keywords:
@@ -71,7 +71,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.0.4
-    created: "2025-01-12T12:31:14.036537+08:00"
+    created: "2025-01-12T12:36:45.839657+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -81,7 +81,7 @@ entries:
     description: MongoDB(R) is a relational open source NoSQL database. Easy to use,
       it stores data in JSON-like documents. Automated scalability and high-performance.
       Ideal for developing cloud native applications.
-    digest: 7a0bb6a76775189b0d2210f0957bcb0219cdd793de719e152123db0e9205ce2b
+    digest: 5a5ae29fd97f84210bb538f3c102b2c098228507d096bd57d985b62e5d9e2ff7
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
     keywords:
@@ -113,7 +113,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.4.3
-    created: "2025-01-12T12:31:14.039118+08:00"
+    created: "2025-01-12T12:36:45.843055+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -123,7 +123,7 @@ entries:
     description: MySQL is a fast, reliable, scalable, and easy to use open source
       relational database system. Designed to handle mission-critical, heavy-load
       production applications.
-    digest: 5cb378ad74be7402ff39188222681ecb9b2712fa909dd18224b46f83777080fb
+    digest: c5d3383bd28135e6c5a9f703f2b6f18438e4475e17fc89024e336e0b46755566
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/mysql/img/mysql-stack-220x234.png
     keywords:
@@ -144,11 +144,11 @@ entries:
   nfs-client:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2025-01-12T12:31:14.039441+08:00"
+    created: "2025-01-12T12:36:45.843408+08:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
-    digest: d4a2de8a1aab66b452826e424858ee6213e72b99f005927e4c2a640cc6923ae5
+    digest: b39a53a2452ee699b7dbcebf1cc73961b81262142cbe135e4aa623a54baf6a09
     home: https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
     keywords:
     - nfs
@@ -174,7 +174,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 17.2.0
-    created: "2025-01-12T12:31:14.04317+08:00"
+    created: "2025-01-12T12:36:45.846689+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -184,7 +184,7 @@ entries:
     description: PostgreSQL (Postgres) is an open source object-relational database
       known for reliability and data integrity. ACID-compliant, it supports foreign
       keys, joins, views, triggers and stored procedures.
-    digest: 748d00c302454fd51af92f7a217a139ea9b24788236023a782b203c6391074df
+    digest: 07a99082117482740c40a688f3df988480568c483fc0908c55e7de151ab6fadc
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
     keywords:
@@ -214,7 +214,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 4.0.5
-    created: "2025-01-12T12:31:14.045864+08:00"
+    created: "2025-01-12T12:36:45.849601+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -224,7 +224,7 @@ entries:
     description: RabbitMQ is an open source general-purpose message broker that is
       designed for consistent, highly-available messaging scenarios (both synchronous
       and asynchronous).
-    digest: 4e510211a52534c461c7ea2d03ef6d89f818ee52143a6a11b208035974fb1592
+    digest: 14d4dae793521e17fde3eb3e3e36e693624553d43fc6bca2ec79c6966df9e59e
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/rabbitmq/img/rabbitmq-stack-220x234.png
     keywords:
@@ -257,7 +257,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 7.4.1
-    created: "2025-01-12T12:31:14.050192+08:00"
+    created: "2025-01-12T12:36:45.853335+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -267,7 +267,7 @@ entries:
     description: Redis(R) is an open source, advanced key-value store. It is often
       referred to as a data structure server since keys can contain strings, hashes,
       lists, sets and sorted sets.
-    digest: ebaa9ab7101a73921aaea41bc24e635eda5075e9bbdfa3259246092f1df502f2
+    digest: 8018c02b8067f1aa7c0e71734e5072e0a5bc10b88012c929550ec9e6d0a01ef4
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
     keywords:
@@ -286,12 +286,12 @@ entries:
   school:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-12T12:31:14.050425+08:00"
+    created: "2025-01-12T12:36:45.853576+08:00"
     description: A Helm chart for Kubernetes
-    digest: 24797431897d6395dedf0ad29403b67d0cf9685f7b9956a6175f5b6722404564
+    digest: b16050c1c67559681b3148315f7e0f201c4af22c778fb3371cdced4cf439a289
     name: school
     type: application
     urls:
     - packages/school-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-12T12:31:14.028343+08:00"
+generated: "2025-01-12T12:36:45.832416+08:00"

@@ -33,7 +33,7 @@ spec:
               mountPath: /app/configs
               readOnly: true
             - name: school-vol
-              mountPath: /app/logs
+              mountPath: /app/uploads
           ports:
             - name: http-port
               containerPort: 8080
