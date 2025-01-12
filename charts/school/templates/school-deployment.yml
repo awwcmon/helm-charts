@@ -32,7 +32,7 @@ spec:
             - name: school-vl
               mountPath: /app/configs
               readOnly: true
-            - name: school-vol
+            - name: school
               mountPath: /app/uploads
           ports:
             - name: http-port
@@ -63,14 +63,14 @@ spec:
         - name: school-vl
           configMap:
             name: school-config
-        - name: school-vol
+        - name: school
           persistentVolumeClaim:
-            claimName: school-pvc
+            claimName: school
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: school-pvc
+  name: school
 spec:
   accessModes:
     - ReadWriteMany # 可根据需要调整，例如 ReadOnlyMany, ReadWriteMany
