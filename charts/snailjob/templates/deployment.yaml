@@ -22,6 +22,15 @@ spec:
           name: http
         - containerPort: 1788
           name: grpc
+        command:
+          - "java"
+          - "-Djava.security.egd=file:/dev/./urandom"
+          - "-XX:+HeapDumpOnOutOfMemoryError"
+          - "-XX:+UseZGC"
+          - "-jar"
+          - "app.jar"
+        args:
+          - "${PARAMS}"  # 传递 PARAMS 环境变量
         env:
         - name: PARAMS
           valueFrom:
