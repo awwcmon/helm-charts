@@ -25,13 +25,12 @@ spec:
         command:
           - "sh"
           - "-c"
-          - "java"
-          - "-Djava.security.egd=file:/dev/./urandom"
-          - "-XX:+HeapDumpOnOutOfMemoryError"
-          - "-XX:+UseZGC"
-          - "${PARAMS}"
-          - "-jar"
-          - "app.jar"
+          - |
+          - "java -Djava.security.egd=file:/dev/./urandom \
+            -XX:+HeapDumpOnOutOfMemoryError \
+            -XX:+UseZGC \
+            ${PARAMS} \
+            -jar app.jar"
         env:
         - name: PARAMS
           valueFrom:
