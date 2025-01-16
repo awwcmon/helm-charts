@@ -27,7 +27,7 @@ spec:
           - "-Djava.security.egd=file:/dev/./urandom"
           - "-XX:+HeapDumpOnOutOfMemoryError"
           - "-XX:+UseZGC"
-          - ${PARAMS}
+          - "${PARAMS}"
           - "-jar"
           - "app.jar"
         env:
