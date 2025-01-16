@@ -23,9 +23,9 @@ spec:
         - containerPort: 1788
           name: grpc
         command:
-          - "sh"
-          - "-c"
-          - "java -Djava.security.egd=file:/dev/./urandom -XX:+HeapDumpOnOutOfMemoryError -XX:+UseZGC -jar app.jar ${PARAMS}"
+        - "sh"
+        - "-c"
+        - "java -Djava.security.egd=file:/dev/./urandom -XX:+HeapDumpOnOutOfMemoryError -XX:+UseZGC -jar app.jar ${PARAMS}"
         env:
         - name: PARAMS
           valueFrom:
