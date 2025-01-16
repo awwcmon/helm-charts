@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: snail-job-server
+  namespace: default
+spec:
+  serviceName: snail-job
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snail-job
+  template:
+    metadata:
+      labels:
+        app: snail-job
+    spec:
+      containers:
+      - name: snail-job
+        image: opensnail/snail-job:latest
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 1788
+          name: grpc
+        env:
+        - name: PARAMS
+          valueFrom:
+            configMapKeyRef:
+              name: snail-job-config
+              key: params
+        volumeMounts:
+        - name: nfs-data
+          mountPath: /data
+      volumes:
+      - name: nfs-data
+        persistentVolumeClaim:
+          claimName: snail-job-pvc
