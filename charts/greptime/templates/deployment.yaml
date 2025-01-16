@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: greptime
+  labels:
+    app: greptime
+spec:
+  serviceName: greptime
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greptime
+  template:
+    metadata:
+      labels:
+        app: greptime
+    spec:
+      containers:
+      - name: greptime
+        image: greptime/greptimedb:latest
+        args:
+        - standalone
+        - start
+        - --http-addr
+        - 0.0.0.0:4000
+        - --rpc-addr
+        - 0.0.0.0:4001
+        - --mysql-addr
+        - 0.0.0.0:4002
+        - --postgres-addr
+        - 0.0.0.0:4003
+        ports:
+        - containerPort: 4000
+          name: http
+        - containerPort: 4001
+          name: rpc
+        - containerPort: 4002
+          name: mysql
+        - containerPort: 4003
+          name: postgres
+        volumeMounts:
+        - name: greptime-data
+          mountPath: /tmp/greptimedb
+  volumeClaimTemplates:
+  - metadata:
+      name: greptime-data
+    spec:
+      accessModes: ["ReadWriteMany"]
+      storageClassName: nfs-client
+      resources:
+        requests:
+          storage: 5Gi
