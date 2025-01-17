@@ -43,7 +43,7 @@ data:
       HostIP: "127.0.0.1"
       HostPort: "17889"
       Namespace: "764d604ec6fc45f68cd92514c40e9e1a"
-      GroupName: "snail_job_demo_group"
-      Token: "SJ_Wyz3dmsdbDOkDujOTSSoBjGQP1BMsVnj"
+      GroupName: "demo"
+      Token: "SJ_IVBK9l3TMg5gKVOJqUqJowb0AZJul4yF"
       Level: logrus.InfoLevel
       ReportCaller: true

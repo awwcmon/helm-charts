@@ -12,3 +12,7 @@ spec:
       port: 8080
       targetPort: 8080
       nodePort: 8080
+    - name: school-snail-svc-http-port
+      port: 17889
+      targetPort: 17889
+      nodePort: 17889
