@@ -10,9 +10,9 @@ spec:
     targetPort: 8080
     nodePort: 30080
     name: http
-  - port: 1788
-    targetPort: 1788
-    nodePort: 31788
+  - port: 17888
+    targetPort: 17888
+    nodePort: 17888
     name: grpc
   selector:
     app: snail-job
