@@ -39,7 +39,7 @@ data:
       agentPort: 6831
     snailjob:
       ServerHost: "snail-job"
-      ServerPort: "31788"
+      ServerPort: "17888"
       HostIP: "127.0.0.1"
       HostPort: "17889"
       Namespace: "764d604ec6fc45f68cd92514c40e9e1a"
