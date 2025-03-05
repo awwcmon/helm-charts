@@ -3,68 +3,14 @@ entries:
   greptime:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-17T20:21:55.746013+08:00"
+    created: "2025-03-06T00:03:56.757173+08:00"
     description: A Helm chart for Kubernetes
-    digest: 03bbdbdbded997fb2c9e5b563c7e0d85707a092dc1c1751f8676082c9d3bf6da
+    digest: 7709f6ddbc0c5c0b2fe0c84c45f6bdcd564d07b1ebd0a8a9a113efcea5638954
     name: greptime
     type: application
     urls:
     - packages/greptime-0.1.0.tgz
     version: 0.1.0
-  jenkins:
-  - annotations:
-      artifacthub.io/category: integration-delivery
-      artifacthub.io/changes: |
-        - Add option to publish not-ready addresses in controller service.
-      artifacthub.io/images: |
-        - name: jenkins
-          image: docker.io/jenkins/jenkins:2.479.2-jdk17
-        - name: k8s-sidecar
-          image: docker.io/kiwigrid/k8s-sidecar:1.28.4
-        - name: inbound-agent
-          image: jenkins/inbound-agent:3273.v4cfe589b_fd83-1
-      artifacthub.io/license: Apache-2.0
-      artifacthub.io/links: |
-        - name: Chart Source
-          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
-        - name: Jenkins
-          url: https://www.jenkins.io/
-        - name: support
-          url: https://github.com/jenkinsci/helm-charts/issues
-    apiVersion: v2
-    appVersion: 2.479.2
-    created: "2025-01-17T20:21:55.74832+08:00"
-    description: 'Jenkins - Build great things at any scale! As the leading open source
-      automation server, Jenkins provides over 1800 plugins to support building, deploying
-      and automating any project. '
-    digest: 796d2a0182522136130005e129a12fb6b37f9d06120db03d200d6ab02093abd1
-    home: https://www.jenkins.io/
-    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
-    keywords:
-    - jenkins
-    - ci
-    - devops
-    maintainers:
-    - email: maor.friedman@redhat.com
-      name: maorfr
-    - email: mail@torstenwalter.de
-      name: torstenwalter
-    - email: garridomota@gmail.com
-      name: mogaal
-    - email: wmcdona89@gmail.com
-      name: wmcdona89
-    - email: timjacomb1@gmail.com
-      name: timja
-    name: jenkins
-    sources:
-    - https://github.com/jenkinsci/jenkins
-    - https://github.com/jenkinsci/docker-inbound-agent
-    - https://github.com/maorfr/kube-tasks
-    - https://github.com/jenkinsci/configuration-as-code-plugin
-    type: application
-    urls:
-    - packages/jenkins-5.8.0.tgz
-    version: 5.8.0
   mongo:
   - annotations:
       category: Database
@@ -82,7 +28,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.0.4
-    created: "2025-01-17T20:21:55.752841+08:00"
+    created: "2025-03-06T00:03:56.762503+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -92,7 +38,7 @@ entries:
     description: MongoDB(R) is a relational open source NoSQL database. Easy to use,
       it stores data in JSON-like documents. Automated scalability and high-performance.
       Ideal for developing cloud native applications.
-    digest: 1bc38b6058e7d711d28ff625ed89bf072a29d25fd01b1ead4b44ebe385c9a12f
+    digest: 6d2030d373dd517d694523525f155e6a3e26b395aa72ed1321ecff3f4984e50c
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
     keywords:
@@ -124,7 +70,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 8.4.3
-    created: "2025-01-17T20:21:55.755967+08:00"
+    created: "2025-03-06T00:03:56.765106+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -134,7 +80,7 @@ entries:
     description: MySQL is a fast, reliable, scalable, and easy to use open source
       relational database system. Designed to handle mission-critical, heavy-load
       production applications.
-    digest: 468a7ef4c5a471b5a03b4c57b500672826c038d665900d5e62bb67796d939c89
+    digest: 0ac0e6c1e18962081242ca7e5e12c865448bdc81387d93d005d15c924a1d5009
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/mysql/img/mysql-stack-220x234.png
     keywords:
@@ -155,11 +101,11 @@ entries:
   nfs-client:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2025-01-17T20:21:55.756295+08:00"
+    created: "2025-03-06T00:03:56.765678+08:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
-    digest: a0a2813b219dd7433bb2d16e13e44569f998648fd3cf50e2004dbb685c71df31
+    digest: bd86f0fe17ad0649113cc8aa6b2fbd9204d4184d0d24bb1ca032d20c2c3f1fc9
     home: https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
     keywords:
     - nfs
@@ -185,7 +131,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 17.2.0
-    created: "2025-01-17T20:21:55.759406+08:00"
+    created: "2025-03-06T00:03:56.770022+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -195,7 +141,7 @@ entries:
     description: PostgreSQL (Postgres) is an open source object-relational database
       known for reliability and data integrity. ACID-compliant, it supports foreign
       keys, joins, views, triggers and stored procedures.
-    digest: a60de4047edfcbae83870f13c791c308fc7770686f66dbe1450d8cc3067e020e
+    digest: c9493e32c283e00a5aaa3ab7020c16f8762d285d3472958de8749a8697517635
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
     keywords:
@@ -225,7 +171,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 4.0.5
-    created: "2025-01-17T20:21:55.762323+08:00"
+    created: "2025-03-06T00:03:56.772563+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -235,7 +181,7 @@ entries:
     description: RabbitMQ is an open source general-purpose message broker that is
       designed for consistent, highly-available messaging scenarios (both synchronous
       and asynchronous).
-    digest: d4d71a10db3ce62f06d5b295ae989a30f7c2143fffbb12de9f0c57420474bf99
+    digest: d41979d5fa146ef706b6e55a9ec7fe35badeb07422b033a4ccf19a3cb10d64df
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/rabbitmq/img/rabbitmq-stack-220x234.png
     keywords:
@@ -268,7 +214,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 7.4.1
-    created: "2025-01-17T20:21:55.766685+08:00"
+    created: "2025-03-06T00:03:56.776923+08:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -278,7 +224,7 @@ entries:
     description: Redis(R) is an open source, advanced key-value store. It is often
       referred to as a data structure server since keys can contain strings, hashes,
       lists, sets and sorted sets.
-    digest: afd34a8ef5de0b55dd07c1dff340e4cccd3a96e957580cc2b48b78984564cf23
+    digest: 1c35cb1d0cc64e16eeea9d4224b4a1ce7a58c4794ddd5c977a78e39035044c40
     home: https://bitnami.com
     icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
     keywords:
@@ -297,9 +243,9 @@ entries:
   school:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-17T20:21:55.766919+08:00"
+    created: "2025-03-06T00:03:56.777185+08:00"
     description: A Helm chart for Kubernetes
-    digest: 1c680e38be883b535b349a25ef36c3cb0cb084c5010419fd26850dfb729dc07b
+    digest: 7ec0c7cfabe57935d3388920f88412d4b1341493430085bf8a89dfa7a0447594
     name: school
     type: application
     urls:
@@ -308,12 +254,12 @@ entries:
   snailjob:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-17T20:21:55.767125+08:00"
+    created: "2025-03-06T00:03:56.777403+08:00"
     description: A Helm chart for Kubernetes
-    digest: 64a91829b0a3aad65113d12aa93d473b6c2f08bd0da2e389b6db29880d583d76
+    digest: 1b60c2fb9013d925648f12360607ecda4f444678b7049061bbf0e6d481df6cec
     name: snailjob
     type: application
     urls:
     - packages/snailjob-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-17T20:21:55.745629+08:00"
+generated: "2025-03-06T00:03:56.756499+08:00"
