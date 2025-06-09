@@ -23,8 +23,8 @@ spec:
           command: ["./school", "-c", "/app/configs/school.yml"]
           resources:
             requests:
-              cpu: 10m
-              memory: 10Mi
+              cpu: 100m
+              memory: 100Mi
             limits:
               cpu: 1000m
               memory: 1000Mi

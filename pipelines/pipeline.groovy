@@ -87,7 +87,7 @@ spec:
                     ])
                 }
             }
-            stage('build') {
+            stage('build')  {
                 when {
                     expression { !params.SKIP_BUILD }
                 }
